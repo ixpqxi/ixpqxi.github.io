@@ -1,0 +1,1644 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/book.png">
+  <link rel="icon" href="/img/book.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ixpqxi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.NetCat  netcat 简称 nc，安全界叫它瑞士军刀。是一种跨网络连接读写数据的工具，使用TCP或UDP协议。  (1)连接TCP&#x2F;UDP端口  作用 123端口扫描读取端口的banner信息手动连接到网络服务 使用过程 端口扫描 1nc -nvz 192.168.142.2 1-100 读取端口的banner信息 1   连接端口服务 1nc -nv 192.168.142.2 53">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础工具">
+<meta property="og:url" content="https://ixpqxi.github.io/2022/03/12/5d5d586ffe45/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="1.NetCat  netcat 简称 nc，安全界叫它瑞士军刀。是一种跨网络连接读写数据的工具，使用TCP或UDP协议。  (1)连接TCP&#x2F;UDP端口  作用 123端口扫描读取端口的banner信息手动连接到网络服务 使用过程 端口扫描 1nc -nvz 192.168.142.2 1-100 读取端口的banner信息 1   连接端口服务 1nc -nv 192.168.142.2 53">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-12T06:15:06.000Z">
+<meta property="article:modified_time" content="2025-10-26T05:08:47.410Z">
+<meta property="article:author" content="ixpqxi">
+<meta property="article:tag" content="web security">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>基础工具 - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ixpqxi.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"49a544c5bc9684d15c82cd27375dd996","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?49a544c5bc9684d15c82cd27375dd996";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ixpqxi</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="基础工具"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-03-12 14:15" pubdate>
+          2022年3月12日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">基础工具</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="netcat">1.NetCat</h2>
+<blockquote>
+<p>netcat 简称 nc，安全界叫它瑞士军刀。是一种跨网络连接读写数据的工具，使用TCP或UDP协议。</p>
+</blockquote>
+<h3 id="连接tcpudp端口">(1)连接TCP/UDP端口</h3>
+<ul>
+<li><p>作用</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">端口扫描<br>读取端口的<span class="hljs-keyword">banner信息</span><br><span class="hljs-keyword"></span>手动连接到网络服务<br></code></pre></td></tr></table></figure></li>
+<li><p>使用过程</p>
+<p>端口扫描</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nc</span> -nvz <span class="hljs-number">192.168.142.2</span> <span class="hljs-number">1</span>-<span class="hljs-number">100</span><br></code></pre></td></tr></table></figure>
+<p>读取端口的banner信息</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
+<p>连接端口服务</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nc</span> -nv <span class="hljs-number">192.168.142.2</span> <span class="hljs-number">53</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="监听tcpudp端口">(2)监听TCP/UDP端口</h3>
+<ul>
+<li><p>使用</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nc</span> -lnvp <span class="hljs-number">7890</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="传输文件">(3)传输文件</h3>
+<ul>
+<li><p>使用</p>
+<p>接收端开启监听</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nc</span> -lvnp <span class="hljs-number">7890</span> &gt; <span class="hljs-literal">info</span>.txt<br></code></pre></td></tr></table></figure>
+<p>发送端连接并发送</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">nc</span> -nv 接收端<span class="hljs-built_in">IP</span> <span class="hljs-number">7890</span> &lt; <span class="hljs-meta">info</span>.txt<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="远程管理">(4)远程管理</h3>
+<ul>
+<li><p>作用</p>
+<p>在渗透测试中主要用于获取shell、分为反弹shell(受害机连接攻击机)和正向shell(攻击机连接受害机)</p></li>
+<li><p>使用</p>
+<p>反弹shell/反向shell</p>
+<p>正向shell</p></li>
+</ul>
+<h2 id="hydra">2.Hydra</h2>
+<blockquote>
+<p>Hydra是一款非常强大的暴力破解工具，它是由著名的黑客组织THC开发的一款开源暴力破解工具。Hydra是一个验证性质的工具，主要目的是：展示安全研究人员从远程获取一个系统认证权限。</p>
+</blockquote>
+<blockquote>
+<p>Syntax: hydra [[[-l LOGIN|-L FILE] [-p PASS|-P FILE]] | [-C FILE]] [-e nsr] [-o FILE] [-t TASKS] [-M FILE [-T TASKS]] [-w TIME] [-W TIME] [-f] [-s PORT] [-x MIN:MAX:CHARSET] [-c TIME] [-ISOuvVd46] [-m MODULE_OPT] [service://server[:PORT][/OPT]]</p>
+<p>Options: -R 恢复先前终止/崩溃的会话 -I 忽略现有的还原文件(不要等待10秒) -S 执行SSL连接 -s PORT 指定端口 -l LOGIN or -L FILE 指定用户名 or 用户名字典 -p PASS or -P FILE 指定密码 or 密码字典 -x MIN:MAX:CHARSET 自定义密码, type "-x -h" to get help -y 在暴力破解中禁用符号, see above -r use a non-random shuffling method for option -x -e nsr 尝试“n”为空密码，“s”作为通过登录和/或“r”反向登录 -u loop around users, not passwords (effective! implied with -x) -C FILE 使用冒号分割格式，例如“登录名:密码”来代替 -L/-P 参数 -M FILE 指定目标列表文件一行一条, ':' to specify port -o FILE 将找到的登录名/密码对写入文件而不是 -b FORMAT specify the format for the -o FILE: text(default), json, jsonv1 -f / -F 在使用-M参数以后，找到第一对登录名或者密码的时候中止破解 -t TASKS 同时运行的线程数，默认为16 -T TASKS run TASKS connects in parallel overall (for -M, default: 64) -w / -W TIME 设置最大超时的时间，单位秒，默认是30s -c TIME wait time per login attempt over all threads (enforces -t 1) -4 / -6 use IPv4 (default) / IPv6 addresses (put always in [] also in -M) -v / -V / -d verbose mode / show login+pass for each attempt / debug mode -O use old SSL v2 and v3 -K do not redo failed attempts (good for -M mass scanning) -q do not print messages about connection errors -U service module usage details -m OPT options specific for a module, see -U output for information -h more command line options (COMPLETE HELP) server 目标ip service 指定服务名，支持的服务和协议 OPT some service modules support additional input (-U for module help)</p>
+<p>Supported services: adam6500 asterisk cisco cisco-enable cobaltstrike cvs firebird ftp[s] http[s]-{head|get|post} http[s]-{get|post}-form http-proxy http-proxy-urlenum icq imap[s] irc ldap2[s] ldap3[-{cram|digest}md5][s] memcached mongodb mssql mysql nntp oracle-listener oracle-sid pcanywhere pcnfs pop3[s] postgres radmin2 rdp redis rexec rlogin rpcap rsh rtsp s7-300 sip smb smtp[s] smtp-enum snmp socks5 ssh sshkey svn teamspeak telnet[s] vmauthd vnc xmpp</p>
+<p>代理设置</p>
+<p>Use HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables for a proxy setup. E.g. % export HYDRA_PROXY=socks5://l:p@127.0.0.1:9150 (or: socks4:// connect://) % export HYDRA_PROXY=connect_and_socks_proxylist.txt (up to 64 entries) % export HYDRA_PROXY_HTTP=http://login:pass@proxy:8080 % export HYDRA_PROXY_HTTP=proxylist.txt (up to 64 entries)</p>
+<p>Examples: hydra -l user -P passlist.txt ftp://192.168.0.1 hydra -L userlist.txt -p defaultpw imap://192.168.0.1/PLAIN hydra -C defaults.txt -6 pop3s://[2001:db8::1]:143/TLS:DIGEST-MD5 hydra -l admin -p password ftp://[192.168.0.0/24]/ hydra -L logins.txt -P pws.txt -M targets.txt ssh</p>
+</blockquote>
+<h3 id="爆破ssh服务">(1)爆破SSH服务</h3>
+<ul>
+<li><p>显示大量信息</p>
+<p><code>hydra -L ./dir_username.txt -P ./dir_passwd.txt -t 20 -vV -e ns 192.168.142.190 ssh</code></p></li>
+<li><p>取消无用信息</p>
+<p><code>hydra -L ./dir_username.txt -P ./dir_passwd.txt -t 20 -e ns 192.168.142.190 ssh</code></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nix">[<span class="hljs-number">22</span>][ssh] <span class="hljs-params">host:</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">142.190</span>   <span class="hljs-params">login:</span> root   <span class="hljs-params">password:</span> XXXXXX<br>[<span class="hljs-number">22</span>][ssh] <span class="hljs-params">host:</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">142.190</span>   <span class="hljs-params">login:</span> test   <span class="hljs-params">password:</span> XXXXXX<br><span class="hljs-number">1</span> of <span class="hljs-number">1</span> target successfully completed, <span class="hljs-number">2</span> valid passwords found<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="爆破ftp服务">(2)爆破FTP服务</h3>
+<ul>
+<li><p>指定用户名字典、密码字典、不使用空用户名/密码、不显示信息、使用20个线程爆破</p>
+<p><code>hydra -L ./dir_username.txt -P ./dir_passwd.txt -t 20 192.168.142.190 ftp</code></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">[<span class="hljs-number">21</span>][ftp] host: <span class="hljs-number">192.168</span><span class="hljs-number">.142</span><span class="hljs-number">.190</span>   <span class="hljs-keyword">login</span>: test   <span class="hljs-keyword">password</span>: XXXXXX<br><span class="hljs-number">1</span> <span class="hljs-keyword">of</span> <span class="hljs-number">1</span> target successfully completed, <span class="hljs-number">1</span> <span class="hljs-keyword">valid</span> <span class="hljs-keyword">password</span> <span class="hljs-built_in">found</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="安装与配置apache">3、安装与配置apache</h2>
+<h3 id="安装apache">(1)安装apache</h3>
+<p>运行下面的命令来更新软件包索引，并且安装 Apache：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt update<br><span class="hljs-built_in">sudo</span> apt install apache2<br></code></pre></td></tr></table></figure>
+<p>控制apache：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">sudo systemctl status apache2 <span class="hljs-comment">	//查看状态</span><br>sudo systemctl <span class="hljs-built_in">start</span> apache2<span class="hljs-comment">	//允许apache</span><br>sudo systemctl restart apache2<span class="hljs-comment">	//重启apache</span><br>sudo systemctl <span class="hljs-built_in">stop</span> apache2	<span class="hljs-comment">	//停止apache</span><br></code></pre></td></tr></table></figure>
+<h2 id="安装与配置mysql">4、安装与配置MySQL</h2>
+<h3 id="安装mysql">(1)安装MySQL</h3>
+<p>运行下面的命令来更新软件包索引，并且安装 MySQL：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt update<br><span class="hljs-built_in">sudo</span> apt install mysql-server<br></code></pre></td></tr></table></figure>
+<p>控制MySQL：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">sudo systemctl status mysql <span class="hljs-comment">	//查看状态</span><br>sudo systemctl <span class="hljs-built_in">start</span> mysql	<span class="hljs-comment">	//允许apache</span><br>sudo systemctl restart mysql<span class="hljs-comment">	//重启apache</span><br>sudo systemctl <span class="hljs-built_in">stop</span> mysql	<span class="hljs-comment">	//停止apache</span><br></code></pre></td></tr></table></figure>
+<h2 id="sqlmap">5、SQLMap</h2>
+<ul>
+<li><p>-d 直接连接到数据库</p>
+<p>格式：<code>'mysql://USER:PASSWORD@DBMS_IP:DBMS_PORT/DATABASE_NAME' or 'access://DATABASE_FILEPATH'</code></p></li>
+<li><p>-u URL, --url=URL 测试目标URL是否存在SQL注入</p>
+<p>格式：<code>sqlmap -u "http://www.exp.com/?id=1&amp;num=10"</code></p></li>
+<li><p>-r REQUESTFILE 从文件中读取 HTTP 请求</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">sqlmap -<span class="hljs-attribute">r</span> request<span class="hljs-selector-class">.txt</span><br></code></pre></td></tr></table></figure></li>
+<li><p>-p 指定参数，当有多个参数但已经知道具体某个参数存在SQL漏洞，你就可以使用-p指定参数进行探测</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">sqlmap -r request.txt -p <span class="hljs-built_in">id</span><br>sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/?id=1&amp;num=10&quot;</span> -p <span class="hljs-built_in">id</span><br></code></pre></td></tr></table></figure></li>
+<li><p>--cookie 设置cookie</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/?id=1&amp;num=10&quot;</span> --cookie<span class="hljs-operator">=</span><span class="hljs-string">&quot;TEST=112233anb&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>--data 设置post提交的数据</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/&quot;</span> --data<span class="hljs-operator">=</span><span class="hljs-string">&quot;id=1&amp;num=10&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>--users 查看数据库所有的用户</p></li>
+<li><p>--passwords 查看数据库所有的用户密码</p></li>
+<li><p>--current-user 查看数据库当前用户</p></li>
+<li><p>--is-dba 查看当前用户是否有管理员权限</p></li>
+<li><p>--roles 枚举 DBMS 用户角色，仅适用于oracle数据库的时候</p></li>
+<li><p>--dbs 查询所有数据库名</p></li>
+<li><p>--tables 查询所有数据库表名</p></li>
+<li><p>--columns 查询所有列名</p></li>
+<li><p>--current-db 查看当前数据库名</p></li>
+<li><p>--dump-all 查询某数据库某表的所有数据</p></li>
+<li><p>--dump 查询某数据库某表某些列的数据</p></li>
+<li><p>--tamper 设置脚本进行绕过</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/?id=1&amp;num=10&quot;</span> <span class="hljs-attribute">--tamper</span>=space2comment.py<br></code></pre></td></tr></table></figure>
+<p>脚本有</p>
+<table style="width:100%;">
+
+<thead>
+<tr class="header">
+<th><strong>支持的数据库</strong></th>
+<th><strong>编号</strong></th>
+<th><strong>脚本名称</strong></th>
+<th><strong>作用</strong></th>
+<th><strong>实现方式</strong></th>
+<th><strong>测试通过的数据库类型和版本</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ALL</td>
+<td><strong>1</strong></td>
+<td>apostrophemask.py</td>
+<td>用utf8代替引号</td>
+<td>("1 AND '1'='1") '1 AND %EF%BC%871%EF%BC%87=%EF%BC%871'</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>base64encode.py</td>
+<td>用base64编码替换</td>
+<td>("1' AND SLEEP(5)#") 'MScgQU5EIFNMRUVQKDUpIw=='</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>multiplespaces.py</td>
+<td>围绕SQL关键字添加多个空格</td>
+<td>('1 UNION SELECT foobar') '1 UNION SELECT foobar'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>space2plus.py</td>
+<td>用+替换空格</td>
+<td>('SELECT id FROM users') 'SELECT+id+FROM+users'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>nonrecursivereplacement.py</td>
+<td>双重查询语句。取代predefined SQL关键字with表示 suitable for替代（例如 .replace（“SELECT”、”")） filters</td>
+<td>('1 UNION SELECT 2--') '1 UNIOUNIONN SELESELECTCT 2--'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>space2randomblank.py</td>
+<td>代替空格字符（“”）从一个随机的空 白字符可选字符的有效集</td>
+<td>('SELECT id FROM users') 'SELECT%0Did%0DFROM%0Ausers'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>unionalltounion.py</td>
+<td>替换UNION ALL SELECT UNION SELECT</td>
+<td>('-1 UNION ALL SELECT') '-1 UNION SELECT'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>securesphere.py</td>
+<td>追加特制的字符串</td>
+<td>('1 AND 1=1') "1 AND 1=1 and '0having'='0having'"</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>MSSQL</td>
+<td><strong>1</strong></td>
+<td>space2hash.py</td>
+<td>绕过过滤‘=’ 替换空格字符（”），（’ – ‘）后跟一个破折号注释，一个随机字符串和一个新行（’ n’）</td>
+<td>'1 AND 9227=9227' '1--nVNaVoPYeva%0AAND--ngNvzqu%0A9227=9227'</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>equaltolike.py</td>
+<td>like 代替等号</td>
+<td>* Input: SELECT * FROM users WHERE id=1 2 * Output: SELECT * FROM users WHERE id LIKE 1</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>space2mssqlblank.py(mssql)</td>
+<td>空格替换为其它空符号</td>
+<td>Input: SELECT id FROM users Output: SELECT%08id%02FROM%0Fusers</td>
+<td>* Microsoft SQL Server 2000 * Microsoft SQL Server 2005</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>space2mssqlhash.py</td>
+<td>替换空格</td>
+<td>('1 AND 9227=9227') '1%23%0AAND%23%0A9227=9227'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>between.py</td>
+<td>用between替换大于号（&gt;）</td>
+<td>('1 AND A &gt; B--') '1 AND A NOT BETWEEN 0 AND B--'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>percentage.py</td>
+<td>asp允许每个字符前面添加一个%号</td>
+<td>* Input: SELECT FIELD FROM TABLE * Output: %S%E%L%E%C%T %F%I%E%L%D %F%R%O%M %T%A%B%L%E</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>sp_password.py</td>
+<td>追加sp_password’从DBMS日志的自动模糊处理的有效载荷的末尾</td>
+<td>('1 AND 9227=9227-- ') '1 AND 9227=9227-- sp_password'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>charencode.py</td>
+<td>url编码</td>
+<td>* Input: SELECT FIELD FROM%20TABLE * Output: %53%45%4c%45%43%54%20%46%49%45%4c%44%20%46%52%4f%4d%20%54%41%42%4c%45</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>randomcase.py</td>
+<td>随机大小写</td>
+<td>* Input: INSERT * Output: InsERt</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>charunicodeencode.py</td>
+<td>字符串 unicode 编码</td>
+<td>* Input: SELECT FIELD%20FROM TABLE * Output: %u0053%u0045%u004c%u0045%u0043%u0054%u0020%u0046%u0049%u0045%u004c%u0044%u0020%u0046%u0052%u004f%u004d%u0020%u0054%u0041%u0042%u004c%u0045′</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>space2comment.py</td>
+<td>Replaces space character (‘ ‘) with comments ‘/**/’</td>
+<td>* Input: SELECT id FROM users * Output: SELECT//id//FROM/**/users</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>MYSQL</td>
+<td><strong>1</strong></td>
+<td>equaltolike.py</td>
+<td>like 代替等号</td>
+<td>* Input: SELECT * FROM users WHERE id=1 2 * Output: SELECT * FROM users WHERE id LIKE 1</td>
+<td>Microsoft SQL Server 2005 MySQL 4, 5.0 and 5.5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>greatest.py</td>
+<td>绕过过滤’&gt;’ ,用GREATEST替换大于号。</td>
+<td>('1 AND A &gt; B') '1 AND GREATEST(A,B+1)=A'</td>
+<td>* MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>apostrophenullencode.py</td>
+<td>绕过过滤双引号，替换字符和双引号。</td>
+<td>tamper("1 AND '1'='1") '1 AND %00%271%00%27=%00%271'</td>
+<td>* MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>ifnull2ifisnull.py</td>
+<td>绕过对 IFNULL 过滤。 替换类似’IFNULL(A, B)’为’IF(ISNULL(A), B, A)’</td>
+<td>('IFNULL(1, 2)') 'IF(ISNULL(1),2,1)'</td>
+<td>* MySQL 5.0 and 5.5</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>space2mssqlhash.py</td>
+<td>替换空格</td>
+<td>('1 AND 9227=9227') '1%23%0AAND%23%0A9227=9227'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>modsecurityversioned.py</td>
+<td>过滤空格，包含完整的查询版本注释</td>
+<td>('1 AND 2&gt;1--') '1 /<em>!30874AND 2&gt;1</em>/--'</td>
+<td>* MySQL 5.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>space2mysqlblank.py</td>
+<td>空格替换其它空白符号(mysql)</td>
+<td>Input: SELECT id FROM users Output: SELECT%0Bid%0BFROM%A0users</td>
+<td>* MySQL 5.1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>between.py</td>
+<td>用between替换大于号（&gt;）</td>
+<td>('1 AND A &gt; B--') '1 AND A NOT BETWEEN 0 AND B--'</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>modsecurityzeroversioned.py</td>
+<td>包含了完整的查询与零版本注释</td>
+<td>('1 AND 2&gt;1--') '1 /<em>!00000AND 2&gt;1</em>/--'</td>
+<td>* MySQL 5.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>space2mysqldash.py</td>
+<td>替换空格字符（”）（’ – ‘）后跟一个破折号注释一个新行（’ n’）</td>
+<td>('1 AND 9227=9227') '1--%0AAND--%0A9227=9227'</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>bluecoat.py</td>
+<td>代替空格字符后与一个有效的随机空白字符的SQL语句。 然后替换=为like</td>
+<td>('SELECT id FROM users where id = 1') 'SELECT%09id FROM users where id LIKE 1'</td>
+<td>* MySQL 5.1, SGOS</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>percentage.py</td>
+<td>asp允许每个字符前面添加一个%号</td>
+<td>* Input: SELECT FIELD FROM TABLE * Output: %S%E%L%E%C%T %F%I%E%L%D %F%R%O%M %T%A%B%L%E</td>
+<td>* Microsoft SQL Server 2000, 2005 * MySQL 5.1.56, 5.5.11 * PostgreSQL 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>charencode.py</td>
+<td>url编码</td>
+<td>* Input: SELECT FIELD FROM%20TABLE * Output: %53%45%4c%45%43%54%20%46%49%45%4c%44%20%46%52%4f%4d%20%54%41%42%4c%45</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>randomcase.py</td>
+<td>随机大小写</td>
+<td>* Input: INSERT * Output: InsERt</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>versionedkeywords.py</td>
+<td>Encloses each non-function keyword with versioned MySQL comment</td>
+<td>* Input: 1 UNION ALL SELECT NULL, NULL, CONCAT(CHAR(58,104,116,116,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,100,114,117,58))# * Output: 1/<em>!UNION<strong>!ALL</strong>!SELECT<strong>!NULL<em>/,/</em>!NULL<em>/, CONCAT(CHAR(58,104,116,116,58),IFNULL(CAST(CURRENT_USER()/</em>!AS</strong>!CHAR</em>/),CHAR(32)),CHAR(58,100,114,117,58))#</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>space2comment.py</td>
+<td>Replaces space character (‘ ‘) with comments ‘/**/’</td>
+<td>* Input: SELECT id FROM users * Output: SELECT//id//FROM/**/users</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>charunicodeencode.py</td>
+<td>字符串 unicode 编码</td>
+<td>* Input: SELECT FIELD%20FROM TABLE * Output: %u0053%u0045%u004c%u0045%u0043%u0054%u0020%u0046%u0049%u0045%u004c%u0044%u0020%u0046%u0052%u004f%u004d%u0020%u0054%u0041%u0042%u004c%u0045′</td>
+<td>* Microsoft SQL Server 2000 * Microsoft SQL Server 2005 * MySQL 5.1.56 * PostgreSQL 9.0.3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>versionedmorekeywords.py</td>
+<td>注释绕过</td>
+<td>* Input: 1 UNION ALL SELECT NULL, NULL, CONCAT(CHAR(58,122,114,115,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,115,114,121,58))# * Output: 1/<em>!UNION<strong>!ALL</strong>!SELECT<strong>!NULL<em>/,/</em>!NULL<em>/,/</em>!CONCAT<em>/(/</em>!CHAR<em>/(58,122,114,115,58),/</em>!IFNULL<em>/(CAST(/</em>!CURRENT_USER<em>/()/</em>!AS</strong>!CHAR</em>/),/<em>!CHAR</em>/(32)),/<em>!CHAR</em>/(58,115,114,121,58))#</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>* MySQL &lt; 5.1</td>
+<td><strong>19</strong></td>
+<td>halfversionedmorekeywords.py</td>
+<td>关键字前加注释</td>
+<td>* Input: value’ UNION ALL SELECT CONCAT(CHAR(58,107,112,113,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,97,110,121,58)), NULL, NULL# AND ‘QDWa’='QDWa * Output: value’/<em>!0UNION/</em>!0ALL/<em>!0SELECT/</em>!0CONCAT(/<em>!0CHAR(58,107,112,113,58),/</em>!0IFNULL(CAST(/<em>!0CURRENT_USER()/</em>!0AS/<em>!0CHAR),/</em>!0CHAR(32)),/<em>!0CHAR(58,97,110,121,58)), NULL, NULL#/</em>!0AND ‘QDWa’='QDWa</td>
+<td>* MySQL 4.0.18, 5.0.22</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>halfversionedmorekeywords.py</td>
+<td>当数据库为mysql时绕过防火墙，每个关键字之前添加 mysql版本评论</td>
+<td>1.("value' UNION ALL SELECT CONCAT(CHAR(58,107,112,113,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,97,110,121,58)), NULL, NULL# AND 'QDWa'='QDWa") 2."value'/<em>!0UNION/</em>!0ALL/<em>!0SELECT/</em>!0CONCAT(/<em>!0CHAR(58,107,112,113,58),/</em>!0IFNULL(CAST(/<em>!0CURRENT_USER()/</em>!0AS/<em>!0CHAR),/</em>!0CHAR(32)),/<em>!0CHAR(58,97,110,121,58)),/</em>!0NULL,/<em>!0NULL#/</em>!0AND 'QDWa'='QDWa"</td>
+<td>* MySQL 4.0.18, 5.0.22</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>MySQL &gt;= 5.1.13</td>
+<td><strong>21</strong></td>
+<td>space2morehash.py</td>
+<td>空格替换为 #号 以及更多随机字符串 换行符</td>
+<td>* Input: 1 AND 9227=9227 * Output: 1%23PTTmJopxdWJ%0AAND%23cWfcVRPV%0A9227=9227</td>
+<td>MySQL 5.1.41</td>
+</tr>
+<tr class="odd">
+<td>Oracle</td>
+<td><strong>1</strong></td>
+<td>greatest.py</td>
+<td>绕过过滤’&gt;’ ,用GREATEST替换大于号。</td>
+<td>('1 AND A &gt; B') '1 AND GREATEST(A,B+1)=A'</td>
+<td>* MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>apostrophenullencode.py</td>
+<td>绕过过滤双引号，替换字符和双引号。</td>
+<td>tamper("1 AND '1'='1") '1 AND %00%271%00%27=%00%271'</td>
+<td>* MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>between.py</td>
+<td>用between替换大于号（&gt;）</td>
+<td>('1 AND A &gt; B--') '1 AND A NOT BETWEEN 0 AND B--'</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>charencode.py</td>
+<td>url编码</td>
+<td>* Input: SELECT FIELD FROM%20TABLE * Output: %53%45%4c%45%43%54%20%46%49%45%4c%44%20%46%52%4f%4d%20%54%41%42%4c%45</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>randomcase.py</td>
+<td>随机大小写</td>
+<td>* Input: INSERT * Output: InsERt</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>charunicodeencode.py</td>
+<td>字符串 unicode 编码</td>
+<td>* Input: SELECT FIELD%20FROM TABLE * Output: %u0053%u0045%u004c%u0045%u0043%u0054%u0020%u0046%u0049%u0045%u004c%u0044%u0020%u0046%u0052%u004f%u004d%u0020%u0054%u0041%u0042%u004c%u0045′</td>
+<td>* Microsoft SQL Server 2000 * Microsoft SQL Server 2005 * MySQL 5.1.56 * PostgreSQL 9.0.3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>space2comment.py</td>
+<td>Replaces space character (‘ ‘) with comments ‘/**/’</td>
+<td>* Input: SELECT id FROM users * Output: SELECT//id//FROM/**/users</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>PostgreSQL</td>
+<td><strong>1</strong></td>
+<td>greatest.py</td>
+<td>绕过过滤’&gt;’ ,用GREATEST替换大于号。</td>
+<td>('1 AND A &gt; B') '1 AND GREATEST(A,B+1)=A'</td>
+<td>* MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>apostrophenullencode.py</td>
+<td>绕过过滤双引号，替换字符和双引号。</td>
+<td>tamper("1 AND '1'='1") '1 AND %00%271%00%27=%00%271'</td>
+<td>* MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>between.py</td>
+<td>用between替换大于号（&gt;）</td>
+<td>('1 AND A &gt; B--') '1 AND A NOT BETWEEN 0 AND B--'</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>percentage.py</td>
+<td>asp允许每个字符前面添加一个%号</td>
+<td>* Input: SELECT FIELD FROM TABLE * Output: %S%E%L%E%C%T %F%I%E%L%D %F%R%O%M %T%A%B%L%E</td>
+<td>* Microsoft SQL Server 2000, 2005 * MySQL 5.1.56, 5.5.11 * PostgreSQL 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>charencode.py</td>
+<td>url编码</td>
+<td>* Input: SELECT FIELD FROM%20TABLE * Output: %53%45%4c%45%43%54%20%46%49%45%4c%44%20%46%52%4f%4d%20%54%41%42%4c%45</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>randomcase.py</td>
+<td>随机大小写</td>
+<td>* Input: INSERT * Output: InsERt</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>charunicodeencode.py</td>
+<td>字符串 unicode 编码</td>
+<td>* Input: SELECT FIELD%20FROM TABLE * Output: %u0053%u0045%u004c%u0045%u0043%u0054%u0020%u0046%u0049%u0045%u004c%u0044%u0020%u0046%u0052%u004f%u004d%u0020%u0054%u0041%u0042%u004c%u0045′</td>
+<td>* Microsoft SQL Server 2000 * Microsoft SQL Server 2005 * MySQL 5.1.56 * PostgreSQL 9.0.3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>space2comment.py</td>
+<td>Replaces space character (‘ ‘) with comments ‘/**/’</td>
+<td>* Input: SELECT id FROM users * Output: SELECT//id//FROM/**/users</td>
+<td>* Microsoft SQL Server 2005 * MySQL 4, 5.0 and 5.5 * Oracle 10g * PostgreSQL 8.3, 8.4, 9.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Microsoft Access</td>
+<td><strong>1</strong></td>
+<td>appendnullbyte.py</td>
+<td>在有效负荷结束位置加载零字节字符编码</td>
+<td>('1 AND 1=1') '1 AND 1=1%00'</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>其他</td>
+<td></td>
+<td>chardoubleencode.py</td>
+<td>双url编码(不处理以编码的)</td>
+<td>* Input: SELECT FIELD FROM%20TABLE * Output: %2553%2545%254c%2545%2543%2554%2520%2546%2549%2545%254c%2544%2520%2546%2552%254f%254d%2520%2554%2541%2542%254c%2545</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>unmagicquotes.py</td>
+<td>宽字符绕过 GPC addslashes</td>
+<td>* Input: 1′ AND 1=1 * Output: 1%bf%27 AND 1=1–%20</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>randomcomments.py</td>
+<td>用/**/分割sql关键字</td>
+<td>‘INSERT’ becomes ‘IN//S//ERT’</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></li>
+<li><p>--level=5 --risk=3 设置扫描等级</p>
+<p>一共有5个探测等级，默认是1。等级越高，说明探测时使用的payload也越多。其中5级的payload最多，会自动破解出cookie、XFF等头部注入。当然，等级越高，探测的时间也越慢。这个参数会影响测试的注入点，GET和POST的数据都会进行测试，HTTP cookie在level为2时就会测试，HTTP User-Agent/Referer头在level为3时就会测试。在不确定哪个参数为注入点时，为了保证准确性，建议设置level为5</p>
+<p>一共有3个危险等级，也就是说你认为这个网站存在几级的危险等级。和探测等级一个意思，在不确定的情况下，建议设置为3级，--risk=3</p></li>
+<li><p>--sql-shell 执行SQL语句</p></li>
+<li><p>--os-shell/--os-cmd 执行系统命令</p></li>
+<li><p>--file-read 读取文件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/?id=1&amp;num=10&quot;</span> --<span class="hljs-keyword">file</span>-<span class="hljs-keyword">read</span> <span class="hljs-string">&quot;c:/test.txt&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>--file-write 写入文件</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/?id=1&amp;num=10&quot;</span> --<span class="hljs-keyword">file</span>-write <span class="hljs-keyword">test</span>.txt --<span class="hljs-keyword">file</span>-dest <span class="hljs-string">&quot;D:/hack.txt&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>--dbms 设置数据库</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/?id=1&amp;num=10&quot;</span> --dbms<span class="hljs-operator">=</span><span class="hljs-string">&quot;MySQL&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>--random-agent 使用任意的User-Agent爆破</p></li>
+<li><p>--proxy 使用代理</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/?id=1&amp;num=10&quot;</span> --proxy<span class="hljs-operator">=</span><span class="hljs-string">&quot;192.168.112.8:8080&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>--technique 指定注入的类型</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/?id=1&amp;num=10&quot;</span> <span class="hljs-comment">--technique T</span><br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">标志</th>
+<th style="text-align: center;">注入类型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">延时注入</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">报错注入</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">多语句注入</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">联合注入</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">布尔注入</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>--threads 设置线程数量</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">sqlmap -u <span class="hljs-string">&quot;http://www.exp.com/?id=1&amp;num=10&quot;</span> <span class="hljs-comment">--threads 10</span><br></code></pre></td></tr></table></figure></li>
+<li><p>--fresh-queries 清除缓存</p></li>
+<li><p>--flush-session 刷新session</p></li>
+<li><p>--batch 对所有的交互式的都是默认的</p></li>
+<li><p>--referer 指定referer字段</p></li>
+<li><p>--random-agent 使用随机生成的头部字段</p></li>
+<li><p>-v3 输出详细度 最大值5 会显示请求包和回复包</p></li>
+</ul>
+<h2 id="wireshark">6、Wireshark</h2>
+<h3 id="捕获过滤器">(1)捕获过滤器</h3>
+<p>语法：<code>&lt;Protocol&gt; &lt;Direction&gt; &lt;Host(s)&gt; &lt;Value&gt; &lt;Logical Operations&gt; &lt;Other expression&gt;</code></p>
+<h4 id="protocol协议">Protocol(协议)</h4>
+<p>指定协议。默认使用所支持的所有协议。语法：<code>proto</code></p>
+<p>wireshark支持的协议过滤器如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">协议</th>
+<th style="text-align: center;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">ether</td>
+<td style="text-align: center;">以太网协议</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">fddi</td>
+<td style="text-align: center;">ether的别名</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">tr</td>
+<td style="text-align: center;">ether的别名</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">wlan</td>
+<td style="text-align: center;">无线协议，也是eher的别名</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ip</td>
+<td style="text-align: center;">互联网协议IPv4地址</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ip6</td>
+<td style="text-align: center;">互联网协议IPv6地址</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">arp</td>
+<td style="text-align: center;">地址解析协议</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">rarp</td>
+<td style="text-align: center;">方向地址解析协议</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">decnet</td>
+<td style="text-align: center;">由数字设备公司推出并支持的一组协议集合</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">tcp</td>
+<td style="text-align: center;">传输控制协议</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">udp</td>
+<td style="text-align: center;">用户数据报协议</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">icmp</td>
+<td style="text-align: center;">Internet控制报文协议</td>
+</tr>
+</tbody>
+</table>
+<h4 id="direction方向">Direction(方向)</h4>
+<p>指定来源或目的地。基于传输方向过滤默认使用<code>src or dst</code>。</p>
+<p>###### 1、源src</p>
+<p>src表示只捕获源地址为指定主机或端口的数据包。</p>
+<p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">src</span> host <span class="hljs-selector-attr">[host ip]</span>				#捕获源地址为指定主机的数据包<br><span class="hljs-attribute">src</span> net  <span class="hljs-selector-attr">[net]</span>  				#捕获源地址为指定网段主机的数据包<br><span class="hljs-attribute">src</span> port <span class="hljs-selector-attr">[port]</span>					#捕获源端口为指定端口的数据包<br><span class="hljs-attribute">src</span> portrange <span class="hljs-selector-attr">[port1-port2]</span>		#捕获源端口为指定端口范围的数据包<br></code></pre></td></tr></table></figure></p>
+<p>###### 2、目标dst</p>
+<p>dst表示只捕获目标地址为指定主机或端口的数据包。</p>
+<p><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pf">dst host [host ip]				<span class="hljs-comment">#捕获目标地址为指定主机的数据包</span><br>dst net         				<span class="hljs-comment">#捕获目标地址为指定网段主机的数据包</span><br>dst <span class="hljs-keyword">port</span> [<span class="hljs-keyword">port</span>]					<span class="hljs-comment">#捕获目标端口为指定端口的数据包</span><br>dst portrange [port1-port2]		<span class="hljs-comment">#捕获目标端口为指定端口范围的数据包</span><br></code></pre></td></tr></table></figure></p>
+<p>###### 3、源或目标src or dst</p>
+<p>src or dst表示只捕获源或目标地址为指定主机或端口的数据包。</p>
+<p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">src</span> or dst host <span class="hljs-selector-attr">[host ip]</span><br><span class="hljs-attribute">src</span> or dst net<br><span class="hljs-attribute">src</span> or dst port <span class="hljs-selector-attr">[port]</span><br><span class="hljs-attribute">src</span> or dst portrange <span class="hljs-selector-attr">[port1-port2]</span><br></code></pre></td></tr></table></figure></p>
+<p>###### 4、源和目标src and dst</p>
+<p>src or dst表示只捕获源和目标地址为指定主机或端口的数据包。</p>
+<p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">src</span> and dst host <span class="hljs-selector-attr">[host ip]</span><br><span class="hljs-attribute">src</span> and dst net<br><span class="hljs-attribute">src</span> and dst port <span class="hljs-selector-attr">[port]</span><br><span class="hljs-attribute">src</span> and dst portrange <span class="hljs-selector-attr">[port1-port2]</span><br></code></pre></td></tr></table></figure></p>
+<p>###### 5、特殊方向</p>
+<p>wireshark另外提供两种特殊方向捕获过滤器(广播brocadcast和多播multicast)</p>
+<p><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">ether <span class="hljs-keyword">broadcast	</span>			<span class="hljs-comment">#捕获以太网广播流量</span><br>ip <span class="hljs-keyword">broadcast	</span>			<span class="hljs-comment">#捕获IP广播流量</span><br>ether <span class="hljs-keyword">multicast	</span>			<span class="hljs-comment">#捕获以太网多播流量</span><br>ip <span class="hljs-keyword">multicast	</span>			<span class="hljs-comment">#捕获IPv4多播流量</span><br>ip6 <span class="hljs-keyword">multicast	</span>			<span class="hljs-comment">#捕获IPv6多播流量</span><br></code></pre></td></tr></table></figure></p>
+<h4 id="hosts">Host(s)</h4>
+<p>指定主机地址。基于类型捕获过滤，可使用类型有<code>host(主机)</code>、<code>net(网段)</code>、<code>port(端口)</code>、<code>portrange(端口范围)</code>。默认使用host。</p>
+<p>###### 1、主机host</p>
+<p>host用来指定捕获某主机发送和接收的数据包。语法：<code>host [host ip]</code></p>
+<p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">hsot</span> <span class="hljs-number">192.168.1.100</span><br></code></pre></td></tr></table></figure></p>
+<p>###### 2、网段net</p>
+<p>net指定捕获哪个网段主机的数据包，有三种形式。</p>
+<p>（1）net net形式。第一个net为关键字，第二个net为指定的网段。</p>
+<p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">net</span> <span class="hljs-number">192.168.1.100</span>				#对应掩码<span class="hljs-number">255.255.255.255</span><br><span class="hljs-attribute">net</span> <span class="hljs-number">192</span>.<span class="hljs-number">168</span>.<span class="hljs-number">1</span>					#对应掩码<span class="hljs-number">255.255.255.0</span><br><span class="hljs-attribute">net</span> <span class="hljs-number">192</span>.<span class="hljs-number">168</span>						#对应掩码<span class="hljs-number">255.255.0.0</span><br><span class="hljs-attribute">net</span> <span class="hljs-number">192</span>							#对应掩码<span class="hljs-number">255.0.0.0</span><br></code></pre></td></tr></table></figure></p>
+<p>（2）net mask形式。单独指定IP地址和掩码。</p>
+<p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">net</span> <span class="hljs-number">192.168.1.100</span> mask <span class="hljs-number">255.255.255.255</span><br></code></pre></td></tr></table></figure></p>
+<p>（3）net CIDR形式</p>
+<p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">net</span> <span class="hljs-number">192.168.1.0</span>/<span class="hljs-number">24</span><br></code></pre></td></tr></table></figure></p>
+<p>###### 3、端口port</p>
+<p>port用来指定捕获某端口发送和接收的数据包。语法：<code>posr [port]</code></p>
+<p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">port</span> <span class="hljs-number">80</span><br></code></pre></td></tr></table></figure></p>
+<p>###### 4、端口范围portrange</p>
+<p>portrange用来指定某个端口范围发送和接收的数据包。语法：<code>portrange [port1-port2]</code></p>
+<p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">portrange</span> <span class="hljs-number">1</span>-<span class="hljs-number">100</span><br></code></pre></td></tr></table></figure></p>
+<p>###### 5、特殊类型</p>
+<p>特殊类型gateway表示捕获源或目标为指定以太网地址的包。</p>
+<p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">gateway</span><span class="hljs-meta"> [host ip]</span><br></code></pre></td></tr></table></figure></p>
+<h4 id="other-expression其他表达式">Other expression(其他表达式)</h4>
+<p>使用其他表达式捕获过滤器。</p>
+<p>可通过结合逻辑运算符同时使用多个捕获过滤器。<code>not(!)、and(&amp;&amp;)、or(||)</code></p>
+<p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">host</span> <span class="hljs-number">192.168.1.100</span> and tcp port <span class="hljs-number">80</span><br></code></pre></td></tr></table></figure></p>
+<h3 id="显示过滤器">(2)显示过滤器</h3>
+<p>没条显示过滤器通常都是由若干原语构成，原语之间通过连接符(and、or等)连接，原语前还可以添加not表示相反。</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs prolog">[not] <span class="hljs-symbol">Expression</span> [and/or] [not] <span class="hljs-symbol">Expression</span> ...<br></code></pre></td></tr></table></figure>
+<p>Expression可以为任意原语形式的过滤表达式，由字段名称、关系(条件)和值组成。各条件操作符如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">操作符</th>
+<th style="text-align: center;">简写形式</th>
+<th style="text-align: center;">描述</th>
+<th style="text-align: center;">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">==</td>
+<td style="text-align: center;">eq</td>
+<td style="text-align: center;">等于</td>
+<td style="text-align: center;"><code>ip.addr == 192.168.100</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">!=</td>
+<td style="text-align: center;">ne</td>
+<td style="text-align: center;">不等于</td>
+<td style="text-align: center;"><code>ip.addr != 192.168.1.100</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">&gt;</td>
+<td style="text-align: center;">gt</td>
+<td style="text-align: center;">大于</td>
+<td style="text-align: center;"><code>frame.len &gt; 64</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">&lt;</td>
+<td style="text-align: center;">lt</td>
+<td style="text-align: center;">小于</td>
+<td style="text-align: center;"><code>frame.len &lt; 64</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">&gt;=</td>
+<td style="text-align: center;">ge</td>
+<td style="text-align: center;">大于等于</td>
+<td style="text-align: center;"><code>frame.len &gt;= 64</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">&lt;=</td>
+<td style="text-align: center;">le</td>
+<td style="text-align: center;">小于等于</td>
+<td style="text-align: center;"><code>frame.len &lt;= 64</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">contains</td>
+<td style="text-align: center;">包含某个字符串</td>
+<td style="text-align: center;"><code>http.host contains cisco</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">match</td>
+<td style="text-align: center;">某串字符匹配某个条件</td>
+<td style="text-align: center;"><code>http.host match www.cisco.com</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">&amp;&amp;</td>
+<td style="text-align: center;">and</td>
+<td style="text-align: center;">逻辑与</td>
+<td style="text-align: center;"><code>ip.src == 192.168.1.100 and ip.dst == 192.168.1.101</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">||</td>
+<td style="text-align: center;">or</td>
+<td style="text-align: center;">逻辑或</td>
+<td style="text-align: center;"><code>ip.src == 192.168.1.100 or ip.src == 192.168.1.101</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">!</td>
+<td style="text-align: center;">not</td>
+<td style="text-align: center;">逻辑非</td>
+<td style="text-align: center;"><code>not arp and not icmp</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>配置ethernet过滤器</p>
+<p>该过滤器让wireshark只显示相关的第二层以太网帧。常用ethernet过滤器如下:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">eth.addr</span> == &lt;MAC address&gt;				<span class="hljs-comment">#显示具有指定MAC地址的数据帧</span><br><span class="hljs-attr">eth.src</span> == &lt;MAC address&gt;				<span class="hljs-comment">#显示源MAC地址为指定MAC地址的数据帧</span><br><span class="hljs-attr">eth.dst</span> == &lt;MAC address&gt;				<span class="hljs-comment">#显示目标MAC地址为指定MAC地址的数据帧</span><br><span class="hljs-attr">eth.type</span> == &lt;Protocol Type&gt;				<span class="hljs-comment">#显示指定以太网类型的流量，十六进制为0xNNNN</span><br></code></pre></td></tr></table></figure></li>
+<li><p>配置ARP过滤器</p>
+<p>地址解析协议过滤器，常用如下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">arp.opcode</span> == &lt;value&gt;				<span class="hljs-comment">#显示指定ARP帧:ARP应答帧(2)、ARP请求帧(1)</span><br><span class="hljs-attr">arp.src_hw_mac</span> == &lt;MAC adderss&gt; 	<span class="hljs-comment">#显示指定MAC地址主机发出的ARP帧</span><br></code></pre></td></tr></table></figure></li>
+<li><p>配置主机过滤器</p>
+<p>显示指定主机所发送或接收的数据包。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stylus">ip<span class="hljs-selector-class">.addr</span> == &lt;ip address&gt;<br>ip<span class="hljs-selector-class">.src</span> == &lt;ip address&gt;<br>ip<span class="hljs-selector-class">.dst</span> == &lt;ip address&gt;<br>ip<span class="hljs-selector-class">.ttl</span> <span class="hljs-selector-attr">[==、&gt;、&lt;]</span> &lt;value&gt; 			#显示IP包头中TTL字段值为指定值的数据包<br>ip<span class="hljs-selector-class">.len</span> <span class="hljs-selector-attr">[==、&gt;、&lt;]</span> &lt;value&gt;				#显示指定长度的IP数据包<br>ip<span class="hljs-selector-class">.version</span> == <span class="hljs-selector-attr">[4、6]</span>					 #显示指定IP版本号的数据包<br></code></pre></td></tr></table></figure></li>
+<li><p>配置TCP/UDP过滤器</p>
+<p>以下以TCP过滤器为例，UDP过滤器与其类似。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">tcp.port</span> == &lt;value&gt;			<span class="hljs-comment">#显示指定端口号的数据包</span><br><span class="hljs-attr">tcp.srcport</span> == &lt;value&gt;		<span class="hljs-comment">#显示原端口为指定端口的数据包</span><br><span class="hljs-attr">tcp.dstport</span> == &lt;value&gt;		<span class="hljs-comment">#显示目标端口为指定端口的数据包</span><br></code></pre></td></tr></table></figure></li>
+<li><p>配置协议所特有的显示过滤器</p>
+<ul>
+<li><p>HTTP显示过滤器。以下为常用的HTTP显示过滤器。</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">http.host <span class="hljs-operator">=</span><span class="hljs-operator">=</span> &lt;<span class="hljs-string">&quot;hostname&quot;</span>&gt;<br>http.request.method <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-string">&quot;GET&quot;</span><br>http.request.url <span class="hljs-operator">=</span><span class="hljs-operator">=</span> <span class="hljs-string">&quot;Full request URL&quot;</span><br>http.cookie<br>http.set_cookie<br></code></pre></td></tr></table></figure></li>
+<li><p>DNS显示过滤器</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">dns.flags.response</span> == <span class="hljs-number">0</span>			<span class="hljs-comment">#显示DNS查询数据包</span><br><span class="hljs-attr">dns.flags.response</span> == <span class="hljs-number">1</span>			<span class="hljs-comment">#显示DNS响应数据包</span><br></code></pre></td></tr></table></figure></li>
+<li><p>FTP显示过滤器</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">ftp</span>.request.command == &lt;<span class="hljs-string">&quot;requestedcommand&quot;</span>&gt;<br><span class="hljs-keyword">ftp</span><br><span class="hljs-keyword">ftp</span>-data<br></code></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h2 id="nmap扫描">7、Nmap扫描</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">参数</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">-sT</td>
+<td style="text-align: left;">TCP connect()扫描，会在目标主机的日志记录中记录大批连接请求和错误信息</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-sS</td>
+<td style="text-align: left;">半开扫描，很少有系统能够把它记录到系统日志。需要root权限</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-sF -sN</td>
+<td style="text-align: left;">秘密FIN扫描、Xmas Tree、NULL扫描模式</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-sP</td>
+<td style="text-align: left;">ping扫描，扫描端口时默认使用ping扫描，只有主机存活时才继续扫描</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-sU</td>
+<td style="text-align: left;">UDP扫描，但此方式不可靠</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-sA</td>
+<td style="text-align: left;">此扫描方法通常用来穿过防火墙的规则集</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-sV</td>
+<td style="text-align: left;">探测端口服务版本</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-P0</td>
+<td style="text-align: left;">扫描之前不需要用ping命令，有些防火墙禁止用ping命令。可以使用此选项进行扫描</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-v</td>
+<td style="text-align: left;">显示扫描过程，推荐使用</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-h</td>
+<td style="text-align: left;">帮助选项，帮助文档</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-p</td>
+<td style="text-align: left;">指定端口，格式如：1~65535、1433、135、80等</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-O</td>
+<td style="text-align: left;">启动远程操作系统检测，存在误报</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-A</td>
+<td style="text-align: left;">全面系统检测、启动脚本检测、扫描等</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-oN/-oX/-oG</td>
+<td style="text-align: left;">检报告写入文件，分别是正常、XML、grepable三种格式</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-T4</td>
+<td style="text-align: left;">针对TCP端口禁止动态扫描延迟超过10ms</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-iL</td>
+<td style="text-align: left;">读取主机列表，例如: -iL C:.txt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="google-hack">8、Google Hack</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">关键字</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">site</td>
+<td style="text-align: center;">指定域名</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">intext</td>
+<td style="text-align: center;">正文存在关键字的网页</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">intitle</td>
+<td style="text-align: center;">标题存在关键字的网页</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">info</td>
+<td style="text-align: center;">一些基本信息</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">inurl</td>
+<td style="text-align: center;">url存在关键字的网页</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">filetype</td>
+<td style="text-align: center;">搜索指定文件类型</td>
+</tr>
+</tbody>
+</table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/web-security/" class="category-chain-item">web security</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/web-security/" class="print-no-link">#web security</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基础工具</div>
+      <div>https://ixpqxi.github.io/2022/03/12/5d5d586ffe45/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ixpqxi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年3月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/01/2db6629e6caf/" title="git">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">git</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+  
+    <a href="/atom.xml">RSS</a>
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
