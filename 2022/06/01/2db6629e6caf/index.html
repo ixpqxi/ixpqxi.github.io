@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="en" data-default-color-scheme=auto>
 
 
 
@@ -16,13 +16,13 @@
   <meta name="author" content="ixpqxi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1 提交日志查看  以 ASCII 图方式打印 1git log --graph  2 撤销操作  撤销错误的提交 本次提交：少添加了文件、commit 信息有误、忘记 ignore 导致多添加了文件，或者没有添加某些修改  忘记 ignore 的先使用 git rm &lt;filename&gt; 将文件从暂存区中清除，随后在 .gitignore 中添加规则，最后 git add 少添加了文">
+    <meta name="description" content="1 提交日志查看 以 ASCII 图方式打印 1git log --graph  2 撤销操作 撤销错误的提交 本次提交：少添加了文件、commit 信息有误、忘记 ignore 导致多添加了文件，或者没有添加某些修改  忘记 ignore 的先使用 git rm &lt;filename&gt; 将文件从暂存区中清除，随后在 .gitignore 中添加规则，最后 git add  少添加了文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git">
 <meta property="og:url" content="https://ixpqxi.github.io/2022/06/01/2db6629e6caf/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="1 提交日志查看  以 ASCII 图方式打印 1git log --graph  2 撤销操作  撤销错误的提交 本次提交：少添加了文件、commit 信息有误、忘记 ignore 导致多添加了文件，或者没有添加某些修改  忘记 ignore 的先使用 git rm &lt;filename&gt; 将文件从暂存区中清除，随后在 .gitignore 中添加规则，最后 git add 少添加了文">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:description" content="1 提交日志查看 以 ASCII 图方式打印 1git log --graph  2 撤销操作 撤销错误的提交 本次提交：少添加了文件、commit 信息有误、忘记 ignore 导致多添加了文件，或者没有添加某些修改  忘记 ignore 的先使用 git rm &lt;filename&gt; 将文件从暂存区中清除，随后在 .gitignore 中添加规则，最后 git add  少添加了文件">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-01T11:09:04.000Z">
 <meta property="article:modified_time" content="2025-10-26T05:08:47.410Z">
 <meta property="article:author" content="ixpqxi">
@@ -156,7 +156,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -168,7 +168,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/projects/" target="_self">
                 <i class="iconfont icon-code"></i>
-                <span>项目</span>
+                <span>Projects</span>
               </a>
             </li>
           
@@ -180,7 +180,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
+                <span>Archives</span>
               </a>
             </li>
           
@@ -192,7 +192,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
+                <span>Categories</span>
               </a>
             </li>
           
@@ -204,7 +204,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
+                <span>Tags</span>
               </a>
             </li>
           
@@ -216,8 +216,40 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
+                <span>About</span>
               </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-global"></i>
+                <span>Language</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/zh-CN/" target="_self">
+                    
+                    <span>中文</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/" target="_self">
+                    
+                    <span>English</span>
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -262,7 +294,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-06-01 19:09" pubdate>
-          2022年6月1日 晚上
+          June 1, 2022 pm
         </time>
       </span>
     
@@ -273,7 +305,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          469 字
+          469 words
         
       </span>
     
@@ -284,7 +316,7 @@
         
         
         
-          4 分钟
+          4 mins
         
       </span>
     
@@ -326,39 +358,48 @@
             
               <div class="markdown-body">
                 
-                <h2 id="提交日志查看">1 提交日志查看</h2>
-<ul>
+                <h2 id="1-提交日志查看"><a href="#1-提交日志查看" class="headerlink" title="1 提交日志查看"></a>1 提交日志查看</h2><ul>
 <li><p>以 ASCII 图方式打印</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">git <span class="hljs-built_in">log</span> <span class="hljs-comment">--graph</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="撤销操作">2 撤销操作</h2>
-<ul>
+<h2 id="2-撤销操作"><a href="#2-撤销操作" class="headerlink" title="2 撤销操作"></a>2 撤销操作</h2><ul>
 <li><p>撤销错误的提交</p>
 <p>本次提交：少添加了文件、commit 信息有误、忘记 ignore 导致多添加了文件，或者没有添加某些修改</p>
-<ol type="1">
-<li><p>忘记 ignore 的先使用 <code>git rm &lt;filename&gt;</code> 将文件从暂存区中清除，随后在 <code>.gitignore</code> 中添加规则，最后 <code>git add</code></p></li>
-<li><p>少添加了文件和少添加修改情况则可以 <code>git add</code> 想要在本次提交追加的文件</p></li>
+<ol>
+<li><p>忘记 ignore 的先使用 <code>git rm &lt;filename&gt;</code> 将文件从暂存区中清除，随后在 <code>.gitignore</code> 中添加规则，最后 <code>git add</code></p>
+</li>
+<li><p>少添加了文件和少添加修改情况则可以 <code>git add</code> 想要在本次提交追加的文件</p>
+</li>
 </ol>
-<p>上面两种情况修正后，使用如下命令将提交一次新 commit 以覆盖错误的提交，日志中只会保存新的一次 commit</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">git <span class="hljs-keyword">commit</span> <span class="hljs-operator">-</span>m &quot;&lt;****&gt;&quot; <span class="hljs-comment">--amend</span><br></code></pre></td></tr></table></figure></li>
+<p>上面两种情况修正后，使用如下命令将提交一次新 commit 以覆盖错误的提交，日志中只会保存新的一次  commit</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">git <span class="hljs-keyword">commit</span> <span class="hljs-operator">-</span>m &quot;&lt;****&gt;&quot; <span class="hljs-comment">--amend</span><br></code></pre></td></tr></table></figure>
+</li>
 <li><p>撤销暂存</p>
 <p>粗心地使用 <code>git add .</code> 把所有文件添加到了暂存区，包括了不想在本次提交的文件，使用如下命令撤销多添加到暂存区的文件</p>
 <figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sas">git <span class="hljs-keyword">reset</span> HEAD &lt;<span class="hljs-keyword">filename</span>&gt;<br></code></pre></td></tr></table></figure>
+
 <p>在 git2.23.0 版本后可以使用 <code>git restore</code> 替代</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git restore <span class="hljs-comment">--staged &lt;filename&gt;</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git restore <span class="hljs-comment">--staged &lt;filename&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
 <li><p>撤销修改</p>
 <p>对已存在暂存区中的文件进行修改，使用如下命令可以撤销修改，将文件恢复到上一次提交的状态</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git checkot <span class="hljs-comment">-- &lt;filename&gt;</span><br></code></pre></td></tr></table></figure>
+
 <p>在 git2.23.0 版本后可以使用 <code>git restore</code> 替代</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">git restore <span class="hljs-tag">&lt;<span class="hljs-name">filename</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">git restore <span class="hljs-tag">&lt;<span class="hljs-name">filename</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
 <li><p><code>reset</code> 回滚</p>
 <p><code>--soft</code> 软回滚，保留文件修改，保留添加的暂存，仅移动 <code>HEAD</code> 到指定位置</p>
 <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs aspectj">git reset --<span class="hljs-keyword">soft</span> HEAD~    <span class="hljs-comment">// 回滚到 HEAD 前一级</span><br>git reset --<span class="hljs-keyword">soft</span> HEAD~<span class="hljs-number">2</span>   <span class="hljs-comment">// 回滚到 HEAD 前两级</span><br></code></pre></td></tr></table></figure>
+
 <p><code>--mixed</code> 混合回滚，默认模式，保留文件修改，取消暂存，并移动 <code>HEAD</code> 到指定位置</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--mixed HEAD~</span><br></code></pre></td></tr></table></figure>
+
 <p><code>--hard</code> 硬回滚，清除文件修改，取消暂存，将暂存状态和文件内容完全恢复到指定位置</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard HEAD~</span><br></code></pre></td></tr></table></figure>
-<p><code>--hard</code> 回滚会强制删除文件修改，建议思考清除再使用，若硬回滚失误并且回滚前有 commit 则可以使用 <code>git reflog</code> 查看全部日志以找回误删的 commit</p></li>
+
+<p><code>--hard</code> 回滚会强制删除文件修改，建议思考清除再使用，若硬回滚失误并且回滚前有 commit 则可以使用 <code>git reflog</code> 查看全部日志以找回误删的 commit</p>
+</li>
 </ul>
 
                 
@@ -411,26 +452,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
+          <div>Author</div>
           <div>ixpqxi</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年6月1日</div>
+          <div>Posted on</div>
+          <div>June 1, 2022</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -453,7 +494,7 @@
                       <a href="/2022/08/20/46bb6cfbfdcb/" title="权限提升">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">权限提升</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -462,7 +503,7 @@
                     
                       <a href="/2022/03/12/5d5d586ffe45/" title="基础工具">
                         <span class="hidden-mobile">基础工具</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -479,7 +520,7 @@
     <div id="giscus" class="giscus"></div>
     <script type="text/javascript">
       Fluid.utils.loadComments('#giscus', function() {
-        var options = {"repo":"ixpqxi/ixpqxi.github.io","repo-id":"R_kgDOMZIPiQ","category":"Announcements","category-id":"DIC_kwDOMZIPic4C-cY_","mapping":"pathname","strict":0,"reactions-enabled":1,"emit-metadata":0,"input-position":"top","theme":"preferred_color_scheme","theme-dark":"preferred_color_scheme","lang":"en","loading":"lazy"};
+        var options = {"repo":"ixpqxi/ixpqxi.github.io","repo-id":"R_kgDOMZIPiQ","category":"Announcements","category-id":"DIC_kwDOMZIPic4C-cY_","mapping":"pathname","strict":0,"reactions-enabled":1,"emit-metadata":0,"input-position":"top","theme":"light","theme-dark":"dark","lang":"en","loading":"lazy"};
         var attributes = {};
         for (let option in options) {
           if (!option.startsWith('theme-')) {
@@ -488,7 +529,7 @@
           }
         }
         var light = 'light';
-        var dark = 'preferred_color_scheme';
+        var dark = 'dark';
         window.GiscusThemeLight = light;
         window.GiscusThemeDark = dark;
         attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
@@ -527,7 +568,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>目录</span>
+    <span>Table of Contents</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -583,7 +624,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -591,7 +632,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -767,7 +808,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>

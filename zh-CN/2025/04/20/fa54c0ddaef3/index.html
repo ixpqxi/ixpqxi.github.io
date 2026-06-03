@@ -1,0 +1,902 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/zh-CN/img/book.png">
+  <link rel="icon" href="/zh-CN/img/book.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ixpqxi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Abstract服务器端 Web 应用程序仍主要使用 PHP 编程语言开发。即便在当下，基于 PHP 的 Web 应用程序也饱受多种安全漏洞的困扰，从 SQL 注入到文件包含，再到远程代码执行等。自动化安全测试方法通常侧重于静态分析和污点分析。这些方法高度依赖对 PHP 语言的精确建模，并且常常会产生（可能大量的）误报。有趣的是，诸如模糊测试这样的动态测试技术在 Web 应用程序测试中并未得到广泛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Atropos">
+<meta property="og:url" content="https://ixpqxi.github.io/zh-CN/2025/04/20/fa54c0ddaef3/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="Abstract服务器端 Web 应用程序仍主要使用 PHP 编程语言开发。即便在当下，基于 PHP 的 Web 应用程序也饱受多种安全漏洞的困扰，从 SQL 注入到文件包含，再到远程代码执行等。自动化安全测试方法通常侧重于静态分析和污点分析。这些方法高度依赖对 PHP 语言的精确建模，并且常常会产生（可能大量的）误报。有趣的是，诸如模糊测试这样的动态测试技术在 Web 应用程序测试中并未得到广泛">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ixpqxi.github.io/zh-CN/2-1.png">
+<meta property="article:published_time" content="2025-04-20T11:01:06.000Z">
+<meta property="article:modified_time" content="2025-10-26T05:08:47.406Z">
+<meta property="article:author" content="ixpqxi">
+<meta property="article:tag" content="paper reading">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ixpqxi.github.io/zh-CN/2-1.png">
+  
+  
+  
+  <title>Atropos - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/zh-CN/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/zh-CN/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/zh-CN/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ixpqxi.github.io","root":"/zh-CN/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"49a544c5bc9684d15c82cd27375dd996","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zh-CN/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/zh-CN/js/utils.js" ></script>
+  <script  src="/zh-CN/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?49a544c5bc9684d15c82cd27375dd996";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/zh-CN/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/zh-CN/">
+      <strong>ixpqxi</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/projects/" target="_self">
+                <i class="iconfont icon-code"></i>
+                <span>项目</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/zh-CN/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-global"></i>
+                <span>Language</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/zh-CN/" target="_self">
+                    
+                    <span>中文</span>
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="https://ixpqxi.github.io/" target="_self">
+                    
+                    <span>English</span>
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/zh-CN/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Atropos"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-20 19:01" pubdate>
+          2025年4月20日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Atropos</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>服务器端 Web 应用程序仍主要使用 PHP 编程语言开发。即便在当下，基于 PHP 的 Web 应用程序也饱受多种安全漏洞的困扰，从 SQL 注入到文件包含，再到远程代码执行等。自动化安全测试方法通常侧重于静态分析和污点分析。这些方法高度依赖对 PHP 语言的精确建模，并且常常会产生（可能大量的）误报。有趣的是，诸如模糊测试这样的动态测试技术在 Web 应用程序测试中并未得到广泛应用，尽管它们能够避免这些常见的缺陷，并且在其他领域（例如测试用 C&#x2F;C++ 编写的原生应用程序）中迅速得到采用。在本文中，我们提出了 ATROPOS，这是一种专为基于 PHP 的 Web 应用程序设计的、基于快照和反馈驱动的模糊测试方法。我们的方法考虑了 Web 应用程序面临的挑战，例如维护会话状态和生成高度结构化的输入。此外，我们提出了一种反馈机制，用于自动推断 Web 应用程序使用的键值结构。结合八种新的漏洞检测规则，每种规则涵盖服务器端 Web 应用程序中一类常见的漏洞，ATROPOS 是第一种能够有效且高效地对 Web 应用程序进行模糊测试的方法。我们的评估表明，ATROPOS 在 Web 应用程序测试方面显著优于当前的技术水平。特别是，它平均至少能多发现 32% 的漏洞，同时在不同的测试套件中没有报告任何误报。在分析实际的 Web 应用程序时，我们发现了七个以前未知的漏洞，即使未经身份验证的用户也可以利用这些漏洞。</p>
+<h2 id="1-Introduction-Background"><a href="#1-Introduction-Background" class="headerlink" title="1 Introduction &amp; Background"></a>1 Introduction &amp; Background</h2><p>在访问量排名前十万的网站中，使用 PHP 做为开发语言的占比<a target="_blank" rel="noopener" href="https://w3techs.com/technologies/details/pl-php">w3techs</a></p>
+<p>现有的方法：</p>
+<ul>
+<li><p>静态分析和污点分析：依赖对 PHP 语言的精确建模，尽管努力对 PHP 语言进行建模，但现有方法常常会产生（可能大量的）误报。此外，静态分析通常不适合有效地生成测试用例。</p>
+</li>
+<li><p>模糊测试：现有的模糊测试工具是针对特定类型的程序进行优化的，依赖于 Web 应用程序环境中不存在的几个属性：</p>
+<ul>
+<li>目标程序暴露的接口相对简单（例如，标准输入或文件），而 Web 应用期望从 Web 服务器接收输入，而 Web 服务器又通过 HTTP（S）从 Web 浏览器接收输入</li>
+<li>典型的模糊测试目标程序不会维护大量状态，但是 Web 应用程序维护着大量状态</li>
+<li>经典的模糊测试目标程序处理面向字节流的输入，即翻转位和字节通常能够成功探索新的程序行为，而 Web 应用程序是面向文本的，期望高度结构化的输入，通常包含开发人员定义的标识符</li>
+<li>传统的模糊测试工具无主要监控内存访问违规导致的崩溃，但是 Web 应用程序漏洞很多时候并不会发送崩溃，因此法检测到务器端是否触发了崩溃</li>
+</ul>
+</li>
+<li><p>针对 Web 的模糊测试</p>
+<ul>
+<li>WEBFUZZ 使用基于覆盖率的反馈，但只能检测客户端存储和反射型跨站脚本（XSS）漏洞</li>
+<li>CEFUZZ 仅限于检测远程代码执行和命令注入漏洞</li>
+<li>WFUZZ 不是完全自动化的，缺乏对 Web 应用程序维护的状态的感知，无法访问覆盖率信息，并且通常没有针对服务器端漏洞的漏洞检测规则</li>
+<li>WITCHER 是一种基于覆盖率引导的模糊测试工具，然而该方法仅限于检测两种类型的漏洞</li>
+</ul>
+</li>
+</ul>
+<p>主要贡献：</p>
+<ul>
+<li>提出了 ATROPOS，一种新颖的、基于反馈引导和快照的 Web 应用程序模糊测试方法，能够检测八种类型的服务器端漏洞</li>
+<li>引入了一种新颖的反馈机制，该机制直接从解释器中提取相关的运行时信息，并为随机变异器提供信息，该反馈机制能有效提高覆盖率</li>
+<li>我们提出了八种新的漏洞检测规则，能够高效地检测不同类型的服务器端漏洞，具有高检测率和低误报率</li>
+</ul>
+<h3 id="1-1-Challenges"><a href="#1-1-Challenges" class="headerlink" title="1.1 Challenges"></a>1.1 Challenges</h3><ol>
+<li><p>复杂的接口</p>
+</li>
+<li><p>有状态的环境</p>
+<p> 用户进行身份验证以访问受保护或用户特定的资源，Web 应用程序严重依赖数据库或持久存储来维护状态。解决方法：1）在与 Web 应用程序的大多数交互中忽略状态，对于影响后续运行且难以恢复的关键操作由专家来判断是否进行；2）跟踪所有更改并实现特殊逻辑以最终恢复所有更改。</p>
+</li>
+<li><p>漏洞检测规则</p>
+<p> 用 PHP 或 JavaScript 等解释型语言编写的应用程序中的漏洞通常不会表现为内存安全崩溃，因此无法使用依赖于崩溃信号的标准漏洞检测规则来观察</p>
+</li>
+</ol>
+<h2 id="2-Design"><a href="#2-Design" class="headerlink" title="2 Design"></a>2 Design</h2><p><img src="/zh-CN/./2-1.png" srcset="/zh-CN/img/loading.gif" lazyload></p>
+<p>在内部，ATROPOS 的工作方式与 AFL++ 等模糊测试工具类似，ATROPOS 使用与 AFL++ 相同的算法（称为 explore）来进行种子选择和优先级排序。</p>
+<p>为了实现对 Web 应用程序的模糊测试，做了一些更改：</p>
+<ul>
+<li>由于 Web 应用由多个 PHP 文件组成，因此每次模糊测试随机选择一个文件</li>
+<li>每个模糊测试输入可以包含多个请求，允许模糊测试工具在一次模糊测试迭代中顺序运行两个或更多文件</li>
+<li>ATROPOS 自定义一个变异器，以为每个请求生成高度结构化的键值对输入</li>
+<li>设计了八个针对服务器端漏洞的自定义漏洞检测规则</li>
+</ul>
+<p>ATROPOS 明确避免进行静态分析或污点分析等成本高昂的操作，以保持高吞吐量，并且其漏洞检测规则旨在保持低误报率。</p>
+<h3 id="2-1-Advanced-Feedback-Mechanisms"><a href="#2-1-Advanced-Feedback-Mechanisms" class="headerlink" title="2.1 Advanced Feedback Mechanisms"></a>2.1 Advanced Feedback Mechanisms</h3><p>为了生成高度结构化的输入，我们设计了基于对 Web 应用程序输入的感知表示，依赖以下几个技术来构成整个高级反馈机制</p>
+<h4 id="2-1-1-Inferring-Application-specific-Keys"><a href="#2-1-1-Inferring-Application-specific-Keys" class="headerlink" title="2.1.1 Inferring Application-specific Keys"></a>2.1.1 Inferring Application-specific Keys</h4><p>键名通常是由开发者定义的，不太可能是模糊测试随机生成的复杂语义标记。为了推断键名，ATROPOS hook 了 PHP 解释器访问<code>$_GET</code>、<code>$_POST</code>或<code>$_SERVER</code>等全局变量的过程，一旦发现对某个键进行访问，就会将该键名反馈给 ATROPOS，使得在下一次模糊测试中迭代设置预期的键名</p>
+<h4 id="2-1-2-Inferring-Expected-Values"><a href="#2-1-2-Inferring-Expected-Values" class="headerlink" title="2.1.2 Inferring Expected Values"></a>2.1.2 Inferring Expected Values</h4><p>ATROPOS 使用输入-状态对应关系的启发式方法。由于 Web 应用程序的输入是基于字符串的，因此我们 hook PHP 解析器中所有字符串比较函数，如<code>zend_string_equal_val</code>，当发现字符串比较时，将信息反馈给 ATROPOS，随后使用预期值替换产生错误的值。</p>
+<p>但对于极端的字符串操作，如进行 base64 编码或 hash 等加密处理，ATROPOS 无法精确进行推断。该问题对于传统的模糊测试器也是具有挑战性的。ATROPOS 可以处理像<code>STRTOUPPER</code>或<code>STR_REPLACE</code>这样的字符串操作</p>
+<h4 id="2-1-3-Inferring-Values-for-Regular-Expressions"><a href="#2-1-3-Inferring-Values-for-Regular-Expressions" class="headerlink" title="2.1.3 Inferring Values for Regular Expressions"></a>2.1.3 Inferring Values for Regular Expressions</h4><p>对字符串的直接或者部分比较并不能涵盖所有场景，在 Web 应用程序中还会使用正则表达式匹配的方式来处理字符串。</p>
+<p>在这种情况下，ATROPOS 同样使用 hook 技术，每当发送正则匹配操作就将正则表达式反馈给模糊器，随后使用反向生成字符串技术，如<code>XEGER</code>等工具推导出对应输入</p>
+<h4 id="2-1-4-Inferring-Keys-from-HTML"><a href="#2-1-4-Inferring-Keys-from-HTML" class="headerlink" title="2.1.4 Inferring Keys from HTML"></a>2.1.4 Inferring Keys from HTML</h4><p>为了优化键名或键值对推断，ATROPOS 可以解析应用程序生成的 HTML 输出，以提取潜在有用的键或键值对。</p>
+<p>在前面设计的通用推断机制可以找到所有的键值对，但需要多次迭代，因此该机制可以优化推断过程。</p>
+<h4 id="2-1-5-Performance-Overhead"><a href="#2-1-5-Performance-Overhead" class="headerlink" title="2.1.5 Performance Overhead"></a>2.1.5 Performance Overhead</h4><p>由于收集反馈信息并将其返回给模糊器的成本很高，ATROPOS 仅对产生新覆盖率的每个新输入执行一次动态高级反馈机制。因此，这是每个种子文件的一次性成本，与整个模糊测试活动相比，开销可以忽略不计</p>
+<h3 id="2-2-Stateful-Environment"><a href="#2-2-Stateful-Environment" class="headerlink" title="2.2 Stateful Environment"></a>2.2 Stateful Environment</h3><p>为了满足 Web 应用程序维护复杂状态（例如，会话、数据库、文件系统等）的需求，同时不影响模糊测试效率，我们在适合进行快照和恢复的隔离环境中运行 Web 应用程序。</p>
+<p>我们使用针对模糊测试优化的快速快照，在处理每个输入后方便地恢复整个系统状态。快照确保不仅文件系统被恢复，而且用户会话甚至内存（包括数据库状态）也被恢复，由于恢复后无需重新启动数据库或任何在后台运行的应用程序，ATROPOS 避免了启动时的长时间初始化阶段。</p>
+<p>为了实现文件系统和所有运行进程的快速快照恢复，我们在 NYX 框架之上构建 ATROPOS，在初始化所有资产（例如，数据库）后拍摄快照，并在每次模糊测试迭代后（即，Web 应用程序处理完模糊测试输入或在处理过程中达到一秒超时后）恢复到此快照。</p>
+<h3 id="2-3-Bug-Oracles-Beyond-Memory-Corruption"><a href="#2-3-Bug-Oracles-Beyond-Memory-Corruption" class="headerlink" title="2.3 Bug Oracles Beyond Memory Corruption"></a>2.3 Bug Oracles Beyond Memory Corruption</h3><p>我们的启发式方法依赖两个通用条件来识别漏洞：</p>
+<ul>
+<li>潜在不安全的函数表现出异常或可疑行为，通常会产生警告或错误</li>
+<li>这种行为是由攻击者控制的输入触发的</li>
+</ul>
+<p>如果这两个条件都满足，漏洞检测就会报告针对特定 PHP 函数发现的漏洞，我们的基本见解是，大多数常见漏洞是由一些关键函数引起的，例如<code>mysqli_query()</code>或<code>unserialize()</code></p>
+<p>我们对关键的漏洞点进行插装，并不需要和污点分析一样跟踪用户输入，而是监控函数点的可疑行为。如果用户的输入使得漏洞点发生错误，那就大概率表明用户输入没有经过清理，如果经过适当清理的输入不太可能破坏漏洞点的正常行为。</p>
+<p>对于第二个条件，为了确定异常是由用户输入造成的，ATROPOS 的模糊器在输入时会插入一个特殊字符，并观察在漏洞点中该特殊字符是否出现来判断是否由用户输入造成。为了加快找到触发错误的输入的过程，ATROPOS 包含一个潜在漏洞触发字符串列表。</p>
+<p>检测的漏洞类型：</p>
+<ul>
+<li>SQL 注入：如果输入在处理包含模糊器控制输入的 SQL 查询时导致语法错误，此漏洞检测报告一个漏洞。直观地说，只有未经清理的输入才应该能够通过更改查询来打破 SQL 查询的语法，使其避开预期的约束（引号等）。</li>
+<li>远程代码执行：如果模糊器控制的输入在编译动态 PHP 代码（例如，在调用eval()期间）时引发语法错误，此检测报告一个漏洞。与 SQL 注入检测类似，如果攻击者控制的输入碰巧被解释，很可能会发生语法错误，因为大多数随机输入都是无效的 PHP 代码。清单 3b 为eval()函数提供了一个简短示例。此外，ATROPOS 注入在执行时报告漏洞的有效 PHP 代码，因为攻击者不应该能够在 Web 应用程序的上下文中运行自定义代码。</li>
+<li>远程命令执行：识别远程命令执行（如清单 3c 中所示）更加困难，因为我们没有明确的错误消息。相反，此检测监控是否尝试执行不存在的二进制文件，如果二进制文件名在攻击者的控制之下，就会出现这种情况。此外，模糊器尝试注入一个命令，尝试执行我们放置在虚拟机中的自定义二进制文件，该文件会自动触发此检测。</li>
+<li>本地和远程文件包含：如果对文件相关函数（如include()或require()）的调用导致错误，表明文件不存在，同时文件路径包含模糊器控制的输入，则报告文件包含漏洞（示例见清单 3d）。在某些情况下，应用程序在包含文件之前会检查文件是否存在。为了识别文件包含漏洞，即使它们受到此类存在检查的保护，ATROPOS 偶尔也会插入一个文件路径，当包含该文件时会报告文件包含漏洞。</li>
+<li>PHP 对象注入：如果攻击者控制的输入最终进入反序列化调用（unserialize()，参见清单 3e），则报告对象注入漏洞。由于序列化数据是结构化输入，解析错误可用于检测可疑行为，类似于 SQL 注入检测。</li>
+<li>服务器端请求伪造：如果可以向私有地址范围（例如，<a target="_blank" rel="noopener" href="http://192.168.0.1)发出资源请求,同时包含模糊器控制的输入,则此检测报告一个/">http://192.168.0.1）发出资源请求，同时包含模糊器控制的输入，则此检测报告一个</a> SSRF 漏洞（例如，通过控制对file_get_contents()的调用的主机，见清单 3f）。</li>
+<li>任意文件读写：由于很难确定观察到的文件操作是否恶意，我们保守地将此漏洞检测限制在 PHP 文件上。如果 Web 应用程序尝试读取、写入、删除或重命名 PHP 文件，同时文件名中包含模糊器控制的输入，则触发此检测（参见清单 3g）。此外，ATROPOS 尝试提供一个触发检测的检测 PHP 文件，并根据对其应用的文件操作报告一个漏洞。</li>
+<li>文件上传：这一类别也高度依赖上下文：上传某些文件可能对一个应用程序是允许的，但对另一个应用程序则构成漏洞。我们保守地仅将上传 PHP 文件（即，以.php 结尾的文件）视为安全问题，因为这是最明确的违规行为。如果通过相应的挂钩函数（例如清单 3h 中的move_uploaded_file()）成功上传 PHP 文件，我们认为此漏洞被触发。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/zh-CN/categories/paper-reading/" class="category-chain-item">paper reading</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/zh-CN/tags/paper-reading/" class="print-no-link">#paper reading</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Atropos</div>
+      <div>https://ixpqxi.github.io/zh-CN/2025/04/20/fa54c0ddaef3/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ixpqxi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/zh-CN/2025/05/02/c54785344ee1/" title="ITD">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ITD</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/zh-CN/2025/03/10/0597761e71a0/" title="ssti">
+                        <span class="hidden-mobile">ssti</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"ixpqxi/ixpqxi.github.io","repo-id":"R_kgDOMZIPiQ","category":"Announcements","category-id":"DIC_kwDOMZIPic4C-cY_","mapping":"pathname","strict":0,"reactions-enabled":1,"emit-metadata":0,"input-position":"top","theme":"light","theme-dark":"dark","lang":"en","loading":"lazy"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+  
+    <a href="/zh-CN/atom.xml">RSS</a>
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/zh-CN/js/events.js" ></script>
+<script  src="/zh-CN/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/zh-CN/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/zh-CN/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/zh-CN/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
