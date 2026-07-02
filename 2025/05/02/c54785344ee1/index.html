@@ -23,17 +23,17 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="摘要恶意内部人员是从企业到政府机构等各类组织面临的最具破坏性的威胁之一。内部威胁检测面临诸多挑战，其中一个主要原因是获取真实信息的难度大、成本高。本文提出一种用于内部威胁检测的半监督学习方法。我们在不同的现实条件下采用了三种机器学习方法，包括随机获取初始真实训练数据、基于特定类型的内部恶意行为获取数据，以及通过异常检测系统得分获取数据。评估结果表明，该方法能够利用非常有限的数据进行高精度的内部威胁">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://ixpqxi.github.io/ITD/1.png">
-<meta property="og:image" content="https://ixpqxi.github.io/ITD/2.png">
-<meta property="og:image" content="https://ixpqxi.github.io/ITD/3.png">
-<meta property="og:image" content="https://ixpqxi.github.io/ITD/4.png">
-<meta property="og:image" content="https://ixpqxi.github.io/ITD/5.png">
+<meta property="og:image" content="https://ixpqxi.github.io/2025/05/02/c54785344ee1/1.png">
+<meta property="og:image" content="https://ixpqxi.github.io/2025/05/02/c54785344ee1/2.png">
+<meta property="og:image" content="https://ixpqxi.github.io/2025/05/02/c54785344ee1/3.png">
+<meta property="og:image" content="https://ixpqxi.github.io/2025/05/02/c54785344ee1/4.png">
+<meta property="og:image" content="https://ixpqxi.github.io/2025/05/02/c54785344ee1/5.png">
 <meta property="article:published_time" content="2025-05-01T16:39:00.000Z">
-<meta property="article:modified_time" content="2025-10-26T05:08:47.406Z">
+<meta property="article:modified_time" content="2026-07-01T16:16:20.532Z">
 <meta property="article:author" content="ixpqxi">
 <meta property="article:tag" content="paper reading">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ixpqxi.github.io/ITD/1.png">
+<meta name="twitter:image" content="https://ixpqxi.github.io/2025/05/02/c54785344ee1/1.png">
   
   
   
@@ -282,7 +282,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/sky.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -374,7 +374,7 @@
 <p>内部人员因为有权访问内部的计算机系统，并且了解组织内部的安全配置信息，给内部威胁检测和缓解带来了许多挑战。另外，在组织环境在中，虽然记录了从网络流量到电子邮件和网络日志等多种类型的监控数据，但对这些数据进行处理和分析以检测恶意活动又是另一大挑战。</p>
 <h2 id="2-研究方法"><a href="#2-研究方法" class="headerlink" title="2 研究方法"></a>2 研究方法</h2><p>本文之前的工作中，多数基于无监督学习的方法，在构建异常检测模型时不使用标记数据，以检测与数据集正常行为的偏差。但是由于无监督学习的性质，存在较多的误报。除此之外，监督学习、流在线学习和进化计算等方法也逐渐用在内部威胁检测中，以应对非平稳环境和不平衡数据的挑战。</p>
 <p>本文通过使用半监督学习方法来缩小这些方法之间的差距，在标签（真实信息）可用性非常有限的情况下提高检测结果。我们研究了不同的标签可用性条件。本文设计的系统架构如下图所示：</p>
-<p><img src="/./ITD/1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/05/02/c54785344ee1/1.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="2-1-数据预处理"><a href="#2-1-数据预处理" class="headerlink" title="2.1 数据预处理"></a>2.1 数据预处理</h3><p>事先监控组织内部的数据，包括网络流量、电子邮件文件系和统访问日志以及用户会话等数据，然后按数据产生的时间段聚合数据，可以按照每日或每周的时间段来聚合，不同的时间段代表不同的汇总级别和不同数量的提取数据实例</p>
 <p>接着从聚合的数据中提取表示用户在指定时间段内活动的数值特征，数值特征包括：</p>
 <ul>
@@ -413,8 +413,8 @@
 </ul>
 <p>该数据集包含的数据有：登录&#x2F;注销、电子邮件、网络、文件和拇指驱动器连接等用户活动数据以及有关用户和公司结构的数据。</p>
 <p>本文手动对数据集进行分析，从数据中提取数值特征，数据汇总如下</p>
-<p><img src="/./ITD/2.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-2-实验结果"><a href="#3-2-实验结果" class="headerlink" title="3.2 实验结果"></a>3.2 实验结果</h3><p><img src="/./ITD/3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/05/02/c54785344ee1/2.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-实验结果"><a href="#3-2-实验结果" class="headerlink" title="3.2 实验结果"></a>3.2 实验结果</h3><p><img src="/2025/05/02/c54785344ee1/3.png" srcset="/img/loading.gif" lazyload></p>
 <p>从上表的结果中，可以看出如下结论：</p>
 <ul>
 <li><p><strong>自训练方法表现最优</strong></p>
@@ -431,8 +431,8 @@
 </li>
 </ul>
 <h3 id="3-3-初始标记训练集大小的影响"><a href="#3-3-初始标记训练集大小的影响" class="headerlink" title="3.3 初始标记训练集大小的影响"></a>3.3 初始标记训练集大小的影响</h3><p>为了了解有无监督学习得到的初始标记集对结果的影响，本文进行了进一步的评估，在随机选择和基于异常分数选择两种方法中设置半监督学习初始标记集的大小。在数据集中选择200名标记用户，随后取其5%到50%来构建初始标记训练集，三种算法的 AUC让下图所示：</p>
-<p><img src="/./ITD/4.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/./ITD/5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/05/02/c54785344ee1/4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/05/02/c54785344ee1/5.png" srcset="/img/loading.gif" lazyload></p>
 <p>在随机选择（i）和基于异常检测分数选择（iii）两种设置下，自训练结合随机森林算法（ST (RF)）的性能均显著优于标签传播（LP）和标签扩散（LS）算法。随着初始标记训练集规模扩大，所有算法的曲线下面积（AUC）都呈上升趋势，在标记数据达到训练数据的 20% 时，性能提升效果明显；超过 20% 后，检测性能提升幅度变小。当标记训练数据量较少时，随机选择初始标记集的方式，使用 ST (RF) 能取得更好结果；随着标记数据量增加，基于异常检测分数选择初始标记集的方式，能为 ST (RF) 带来更高的 AUC，即检测性能更优</p>
 <p>ST (RF) 性能卓越，得益于其迭代训练流程与随机森林决策树的集成。迭代训练可不断优化模型，决策树集成能有效划分数据空间，精准识别恶意行为数据，这是其他算法难以企及的。在标记数据量较低时，随机选择的初始标记集分布相对均匀，能为 ST (RF) 提供更广泛的数据特征，利于模型学习；而随着标记数据增多，异常检测分数能筛选出更具代表性和潜在威胁的数据，为模型提供更有价值的信息，从而提升检测性能。当标记数据占比达 20% 时，模型已学习到关键数据特征，继续增加标记数据，新信息对模型性能提升作用减弱，所以检测性能提升幅度变小</p>
 <h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h2><p>本文提出了一种用于内部威胁检测的半监督机器学习方法。结合不同的标记数据可用性条件，使用了三种不同的半监督学习算法（LP、LS 和 ST）。从实验结果中可以看出，以随机森林算法为基础分类器的自训练半监督学习方法在大多数条件下取得了最佳结果。该方法成功地利用有限的训练标签改进了异常检测结果，以检测内部威胁。获得的测试 AUC 为 0.992，在仅 1% 的误报率下能够检测出 90% 的恶意实例，这与使用训练集所有标签的监督学习性能相比具有很强的竞争力。</p>
@@ -529,9 +529,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/24/c5114a16521b/" title="docker">
+                      <a href="/2025/05/24/efb5fd0b6231/" title="休闲时刻来两道PWN作业题">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">docker</span>
+                        <span class="hidden-mobile">休闲时刻来两道PWN作业题</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     

